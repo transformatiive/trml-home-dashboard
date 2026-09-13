@@ -2,12 +2,15 @@
 
 var render = require("../render");
 
-function img(name, size) {
+function img(name, size, qs) {
   size = size || 32;
+  var extra = qs ? (String(qs).charAt(0) === "?" ? qs : "?" + qs) : "";
   return (
     '<img class="ico" src="/icons/' +
     name +
-    '.png" width="' +
+    ".png" +
+    extra +
+    '" width="' +
     size +
     '" height="' +
     size +
@@ -80,6 +83,7 @@ function kindTone(kind) {
   if (kind === "holiday") return "holiday";
   if (kind === "foco") return "foco";
   if (kind === "viagem") return "viagem";
+  if (kind === "pessoal") return "pessoal";
   return "work";
 }
 
@@ -172,12 +176,14 @@ function statCol(label, value, accent) {
   );
 }
 
-function statRow(label, value, unit) {
+function statRow(label, value, unit, accent) {
   return (
     '<table class="stat-row" width="100%" cellpadding="0" cellspacing="0"><tr>' +
     '<td class="label" valign="bottom">' +
     render.escapeHtml(label) +
-    '</td><td class="value" align="right" valign="bottom">' +
+    '</td><td class="value ' +
+    accentClass(accent) +
+    '" align="right" valign="bottom">' +
     render.escapeHtml(String(value)) +
     (unit ? ' <span class="label">' + render.escapeHtml(unit) + "</span>" : "") +
     "</td></tr><tr><td colspan=\"2\" class=\"hairline\">&nbsp;</td></tr></table>"
@@ -194,10 +200,12 @@ function vBars(rows, opts) {
   var min = opts.min != null ? opts.min : Math.min.apply(null, vals);
   var max = opts.max != null ? opts.max : Math.max.apply(null, vals);
   var span = Math.max(1, max - min);
+  var base = opts.base != null ? opts.base : 16;
+  var range = opts.range != null ? opts.range : 88;
   var cells = "";
   rows.forEach(function (r, i) {
     var n = Number(r[field] != null ? r[field] : r.temp);
-    var h = 16 + Math.round(((n - min) / span) * 88);
+    var h = base + Math.round(((n - min) / span) * range);
     var nowCls = r.now ? " now" : "";
     var tone = r.tone || r.band || opts.tone || "slate";
     cells +=
