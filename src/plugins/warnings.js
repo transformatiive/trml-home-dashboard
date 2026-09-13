@@ -1,40 +1,33 @@
-'use strict';
+"use strict";
 
-var AREA = 'LSB';
+var render = require("../render");
 
-function rank(level) {
-  var id = String(level || 'green').toLowerCase();
-  if (id === 'red') return 3;
-  if (id === 'orange') return 2;
-  if (id === 'yellow') return 1;
-  return 0;
+function plugin(ctx) {
+  var w = ctx.warnings || {};
+  var rows = "";
+  if (!w.items || !w.items.length) {
+    rows =
+      "<div class=\"empty sage\">Lisboa sem avisos IPMA. Céu e vento estáveis para o cão e para a estrada.</div>";
+  } else {
+    w.items.forEach(function (item) {
+      rows +=
+        "<div class=\"warn-row " +
+        render.attr(item.color) +
+        "\"><div class=\"title\">" +
+        render.escapeHtml(item.type) +
+        "</div><div class=\"sub\">" +
+        render.escapeHtml(item.level) +
+        (item.text ? " · " + render.escapeHtml(item.text) : "") +
+        "</div></div>";
+    });
+  }
+  var body =
+    "<div class=\"panel\">" +
+    "<div class=\"kicker\">IPMA</div>" +
+    "<div class=\"title\">Avisos</div>" +
+    rows +
+    "</div>";
+  return { title: "Avisos", pluginName: "Avisos", body: body, sky: w.color === "ok" ? "clear" : "storm" };
 }
 
-function load() {
-  return fetch('https://api.ipma.pt/open-data/forecast/warnings/warnings_www.json', {
-    headers: { 'User-Agent': 'trml-home-dashboard/1' }
-  }).then(function (res) {
-    if (!res.ok) throw new Error('ipma-http');
-    return res.json();
-  }).then(function (rows) {
-    var now = Date.now();
-    var list = (rows || []).filter(function (row) {
-      if (row.idAreaAviso !== AREA) return false;
-      var end = row.endTime ? Date.parse(row.endTime) : now + 1;
-      return end >= now;
-    });
-    list.sort(function (a, b) {
-      return rank(b.awarenessLevelID) - rank(a.awarenessLevelID);
-    });
-    var worst = 0;
-    list.forEach(function (row) {
-      var r = rank(row.awarenessLevelID);
-      if (r > worst) worst = r;
-    });
-    return { ok: true, items: list, worst: worst };
-  }).catch(function () {
-    return { ok: false, items: [], worst: 0 };
-  });
-}
-
-module.exports = { load: load, rank: rank };
+module.exports = { id: "warnings", name: "Avisos", plugin: plugin };

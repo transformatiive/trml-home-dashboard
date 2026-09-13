@@ -1,59 +1,32 @@
-'use strict';
+"use strict";
 
-var FEEDS = [
-  'https://feeds.feedburner.com/PublicoRSS',
-  'https://news.google.com/rss/search?q=site:publico.pt&hl=pt-PT&gl=PT&ceid=PT:pt'
-];
+var render = require("../render");
 
-function decode(s) {
-  return String(s || '')
-    .replace(/<!\[CDATA\[([\s\S]*?)\]\]>/g, '$1')
-    .replace(/&amp;/g, '&')
-    .replace(/&quot;/g, '"')
-    .replace(/&#39;/g, "'")
-    .replace(/&lt;/g, '<')
-    .replace(/&gt;/g, '>')
-    .replace(/<[^>]+>/g, '')
-    .trim();
-}
+var DOT = ["sage", "sky", "amber", "alert"];
 
-function itemsFromRss(xml) {
-  var items = [];
-  var re = /<item>([\s\S]*?)<\/item>/gi;
-  var m;
-  while ((m = re.exec(xml)) && items.length < 8) {
-    var block = m[1];
-    var title = (block.match(/<title>([\s\S]*?)<\/title>/i) || [])[1];
-    var cat = (block.match(/<category>([\s\S]*?)<\/category>/i) || [])[1];
-    items.push({
-      title: decode(title),
-      category: decode(cat) || 'Geral'
+function plugin(ctx) {
+  var items = (ctx.news || []).slice(0, 6);
+  var rows = "";
+  if (!items.length) {
+    rows = "<div class=\"empty\">Público indisponível neste momento.</div>";
+  } else {
+    items.forEach(function (item, i) {
+      rows +=
+        "<div class=\"news\"><span class=\"dot " +
+        DOT[i % DOT.length] +
+        "\"></span><span class=\"what\">" +
+        render.escapeHtml(item.title) +
+        "</span></div>";
     });
   }
-  return items;
+  var body =
+    "<div class=\"panel\">" +
+    "<div class=\"kicker\">Notícias</div>" +
+    "<div class=\"title\">Público</div>" +
+    "<div class=\"list\">" +
+    rows +
+    "</div></div>";
+  return { title: "Público", pluginName: "Público", body: body };
 }
 
-function loadOne(url) {
-  return fetch(url, {
-    headers: { 'User-Agent': 'Mozilla/5.0 HomeDashboard/1', Accept: 'application/rss+xml, application/xml, text/xml' }
-  }).then(function (res) {
-    if (!res.ok) throw new Error('rss-http');
-    return res.text();
-  }).then(function (xml) {
-    var items = itemsFromRss(xml);
-    if (!items.length) throw new Error('rss-empty');
-    return items;
-  });
-}
-
-function load() {
-  return loadOne(FEEDS[0]).catch(function () {
-    return loadOne(FEEDS[1]);
-  }).then(function (items) {
-    return { ok: true, items: items };
-  }).catch(function () {
-    return { ok: false, items: [] };
-  });
-}
-
-module.exports = { load: load };
+module.exports = { id: "publico", name: "Público", plugin: plugin };
