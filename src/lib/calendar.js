@@ -15,8 +15,19 @@ function icsUrls() {
   return urls;
 }
 
-function calendarKind(name, summary) {
-  var n = ((name || "") + " " + (summary || "")).toLowerCase();
+function calendarKind(name, summary, location) {
+  var sum = String(summary || "");
+  var n = (String(name || "") + " " + sum + " " + String(location || "")).toLowerCase();
+  if (/^foco\b/i.test(sum) || n.indexOf("bloco") !== -1) return "foco";
+  if (
+    n.indexOf("netjets") !== -1 ||
+    n.indexOf("aeroporto") !== -1 ||
+    n.indexOf("airport") !== -1 ||
+    /\b(lis|opo|fao|mad|lhr|cdg)\b/i.test(location || "")
+  ) {
+    return "viagem";
+  }
+  if (n.indexOf("pessoal") !== -1) return "pessoal";
   if (n.indexOf("online") !== -1) return "home";
   if (n.indexOf("afonso") !== -1 || n.indexOf("fam") !== -1) return "family";
   if (n.indexOf("holiday") !== -1 || n.indexOf("feriado") !== -1) return "holiday";
@@ -50,7 +61,7 @@ async function fetchCalendar() {
     }
   }
   var now = time.lisbonNow();
-  var horizon = new Date(now.getTime() + 36 * 3600 * 1000);
+  var horizon = new Date(now.getTime() + 48 * 3600 * 1000);
   var self = selfEmail;
   var events = all
     .filter(function (ev) {
@@ -69,7 +80,8 @@ async function fetchCalendar() {
         end: eventEnd(ev),
         allDay: !!(ev.start && ev.start.allDay),
         calendar: ev.calendar,
-        kind: calendarKind(ev.calendar, ev.summary),
+        kind: calendarKind(ev.calendar, ev.summary, ev.location),
+        location: ev.location || "",
         timesheet: ics.isTimesheet(ev),
         happening: ev.start.date <= now && eventEnd(ev) >= now,
       };

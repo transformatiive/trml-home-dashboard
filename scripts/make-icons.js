@@ -343,6 +343,30 @@ function iconBolt(c) {
   c.fillRect(16, 24, 6, 16, YEL);
 }
 
+function iconEuro(c) {
+  c.fillCircle(24, 24, 16, INK);
+  c.fillCircle(24, 24, 12, WHT);
+  c.fillRect(14, 18, 16, 3, INK);
+  c.fillRect(14, 26, 16, 3, INK);
+  c.fillRect(18, 12, 4, 24, INK);
+}
+
+function iconChart(c) {
+  c.fillRect(10, 28, 6, 12, BLU);
+  c.fillRect(20, 18, 6, 22, GRN);
+  c.fillRect(30, 12, 6, 28, YEL);
+  c.line(8, 40, 40, 40, INK, 2);
+}
+
+function iconAi(c) {
+  c.fillCircle(24, 22, 10, PPL);
+  c.fillRect(20, 30, 8, 8, PPL);
+  c.fillRect(16, 12, 3, 6, PPL);
+  c.fillRect(29, 12, 3, 6, PPL);
+  c.fillRect(10, 20, 6, 3, PPL);
+  c.fillRect(32, 20, 6, 3, PPL);
+}
+
 var glyphs = {
   "wx-sun": wxSun,
   "wx-moon": wxMoon2,
@@ -369,6 +393,9 @@ var glyphs = {
   "icon-pin": iconPin,
   "icon-dot": iconDot,
   "icon-bolt": iconBolt,
+  "icon-euro": iconEuro,
+  "icon-chart": iconChart,
+  "icon-ai": iconAi,
 };
 
 function appleTouch(size, file) {

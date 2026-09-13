@@ -110,6 +110,75 @@ function daysBetween(a, b) {
   return Math.round((startOfDay(b) - startOfDay(a)) / 86400000);
 }
 
+function pad2(n) {
+  n = Number(n);
+  return n < 10 ? "0" + n : String(n);
+}
+
+function weekdayIndex(date) {
+  var map = { Sun: 0, Mon: 1, Tue: 2, Wed: 3, Thu: 4, Fri: 5, Sat: 6 };
+  var w = parts(date).weekday;
+  return map[w] != null ? map[w] : 0;
+}
+
+function weekdayShortPt(date) {
+  return ["dom", "seg", "ter", "qua", "qui", "sex", "sáb"][weekdayIndex(date)];
+}
+
+function minutesOfDay(date) {
+  var hm = hourMinute(date);
+  return hm.hour * 60 + hm.minute;
+}
+
+function isoWeek(date) {
+  var p = parts(date);
+  var utc = Date.UTC(Number(p.year), Number(p.month) - 1, Number(p.day));
+  var day = new Date(utc).getUTCDay() || 7;
+  var thu = new Date(utc + (4 - day) * 86400000);
+  var year = thu.getUTCFullYear();
+  var yearStart = Date.UTC(year, 0, 1);
+  var week = Math.ceil(((thu - yearStart) / 86400000 + 1) / 7);
+  return { week: week, weeks: isoWeeksInYear(year), year: year };
+}
+
+function isoWeeksInYear(year) {
+  var d = new Date(Date.UTC(year, 11, 28));
+  var day = d.getUTCDay() || 7;
+  var thu = new Date(Date.UTC(year, 11, 28 + (4 - day)));
+  var yearStart = Date.UTC(thu.getUTCFullYear(), 0, 1);
+  return Math.ceil(((thu - yearStart) / 86400000 + 1) / 7);
+}
+
+function quarterInfo(date) {
+  var p = parts(date);
+  var month = Number(p.month);
+  var q = Math.ceil(month / 3);
+  var startM = (q - 1) * 3 + 1;
+  var endM = startM + 2;
+  var lastDay = new Date(Date.UTC(Number(p.year), endM, 0)).getUTCDate();
+  var start = fromLisbonParts(p.year, pad2(startM), "01", "00", "00");
+  var end = fromLisbonParts(p.year, pad2(endM), pad2(lastDay), "23", "59");
+  var elapsed = daysBetween(start, date);
+  var total = daysBetween(start, end) + 1;
+  return { q: q, pct: Math.round((elapsed / total) * 100) };
+}
+
+function workdaysRemaining(date, holidayYmds) {
+  var block = {};
+  (holidayYmds || []).forEach(function (h) {
+    block[h] = true;
+  });
+  var n = 0;
+  var cur = startOfDay(date);
+  var end = endOfYear(date);
+  while (cur <= end) {
+    var wd = weekdayIndex(cur);
+    if (wd !== 0 && wd !== 6 && !block[ymd(cur)]) n += 1;
+    cur = addDays(cur, 1);
+  }
+  return n;
+}
+
 module.exports = {
   TZ: TZ,
   parts: parts,
@@ -127,4 +196,12 @@ module.exports = {
   startOfYear: startOfYear,
   endOfYear: endOfYear,
   daysBetween: daysBetween,
+  pad2: pad2,
+  weekdayIndex: weekdayIndex,
+  weekdayShortPt: weekdayShortPt,
+  minutesOfDay: minutesOfDay,
+  isoWeek: isoWeek,
+  isoWeeksInYear: isoWeeksInYear,
+  quarterInfo: quarterInfo,
+  workdaysRemaining: workdaysRemaining,
 };

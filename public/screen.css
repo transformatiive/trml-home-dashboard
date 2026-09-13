@@ -238,14 +238,15 @@ body.theme-night .item.alert .item-pri { color: #F0A8A0; }
 .item.ok .item-pri { color: #3F6B4A; }
 body.theme-night .item.ok .item-pri { color: #9FBFA4; }
 .swatch { width: 8px; padding-right: 16px; }
-.swatch-work { background: #5B6B7A; }
-.swatch-home, .swatch-ok { background: #3F6B4A; }
-.swatch-family, .swatch-warn { background: #B45309; }
+.swatch-work, .swatch-slate { background: #5B6B7A; }
+.swatch-home, .swatch-ok, .swatch-sage, .swatch-foco { background: #3F6B4A; }
+.swatch-family, .swatch-warn, .swatch-amber, .swatch-viagem { background: #B45309; }
 .swatch-holiday { background: #8A4A3A; }
 .swatch-alert { background: #B42318; }
 .swatch-news, .swatch-mail { background: #5B6B7A; }
-.swatch-foco { background: #3F6B4A; }
-.swatch-viagem { background: #B45309; }
+.swatch-inert, .swatch-pessoal { background: #B8B1A6; }
+body.theme-night .swatch-inert,
+body.theme-night .swatch-pessoal { background: #4A443C; }
 .metrics { margin: 8px 0 32px 0; }
 .metric { padding-right: 28px; }
 .hours, .days, .hbars, .sunarc, .vbars { margin-top: 12px; }
@@ -288,7 +289,53 @@ body.theme-night .sage,
 body.theme-night .ok { color: #9FBFA4; }
 .alert { color: #B42318; }
 body.theme-night .alert { color: #F0A8A0; }
-.ico { vertical-align: middle; }
+.hero-l.money {
+  font-size: 132px;
+}
+.hero-unit {
+  font-family: Georgia, Times, serif;
+  font-size: 52px;
+  letter-spacing: 0;
+}
+.split {
+  border-left: 1px solid #DDD6C8;
+  padding-left: 18px;
+}
+body.theme-night .split { border-left-color: #3A342E; }
+.footer-line {
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px solid #DDD6C8;
+}
+body.theme-night .footer-line { border-top-color: #3A342E; }
+.sunarc-img {
+  display: block;
+  width: 928px;
+  height: 268px;
+  border: 0;
+  margin: 12px 0 0 0;
+}
+.news-kicker {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+.news-hed {
+  font-family: Georgia, Times, serif;
+  font-size: 50px;
+  line-height: 1.1;
+  font-weight: normal;
+  margin: 8px 0;
+}
+.news-lead {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 19px;
+  color: #7A7468;
+}
+body.theme-night .news-lead { color: #9A9388; }
+.headline { margin-bottom: 18px; }
 @media screen and (orientation: portrait) {
   .rotate { display: block; }
   .stage { display: none; }

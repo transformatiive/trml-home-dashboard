@@ -3,26 +3,16 @@
 var time = require("../time");
 var ui = require("../lib/ui");
 var render = require("../render");
+var sunarc = require("../lib/sunarc");
+var fmt = require("../lib/fmt");
 
 function parseStamp(iso) {
   var m = /T(\d{2}):(\d{2})/.exec(iso || "");
-  if (!m) return { h: 0, min: 0, label: "—" };
-  return { h: Number(m[1]), min: Number(m[2]), label: m[1] + ":" + m[2] };
+  if (!m) return null;
+  return Number(m[1]) * 60 + Number(m[2]);
 }
 
-function minutesOf(p) {
-  return p.h * 60 + p.min;
-}
-
-function plugin(ctx) {
-  var w = ctx.weather || {};
-  var now = ctx.now;
-  var hm = time.hourMinute(now);
-  var nowMin = hm.hour * 60 + hm.minute;
-  var rise = parseStamp(w.sunrise);
-  var set = parseStamp(w.sunset);
-  var riseM = minutesOf(rise);
-  var setM = minutesOf(set);
+function htmlArc(nowMin, riseM, setM) {
   var dayLen = Math.max(1, setM - riseM);
   var slots = 12;
   var cells = "";
@@ -42,31 +32,92 @@ function plugin(ctx) {
       (isNow ? " now" : "") +
       '">&nbsp;</div></td>';
   }
-  var afterSet = nowMin > setM;
-  var beforeRise = nowMin < riseM;
-  var status;
-  if (beforeRise) status = "ainda noite · nasce às " + rise.label;
-  else if (afterSet) status = "já noite · pôs-se às " + set.label;
-  else {
-    var left = setM - nowMin;
-    status = "dia · pôr-do-sol daqui a " + Math.round(left / 60) + " h " + (left % 60) + " min";
-  }
-  var body =
-    '<div class="panel">' +
-    ui.titleBar("Sol em Oeiras", time.formatDateLong(now)) +
-    '<table class="metrics" width="100%"><tr>' +
-    ui.metric(rise.label, "nascer") +
-    ui.metric(time.formatTime(now), "agora") +
-    ui.metric(set.label, "pôr") +
-    "</tr></table>" +
-    '<div class="label">' +
-    render.escapeHtml(status) +
-    "</div>" +
+  return (
     '<table class="sunarc" width="100%" cellpadding="0" cellspacing="0"><tr>' +
     cells +
-    "</tr></table>" +
-    '<table class="horizon" width="100%"><tr><td class="horizon-line">&nbsp;</td></tr></table></div>';
+    "</tr></table>"
+  );
+}
+
+function plugin(ctx) {
+  var w = ctx.weather || {};
+  var now = ctx.now;
+  var nowMin = time.minutesOfDay(now);
+  var times = sunarc.solarTimes(now);
+  var yTimes = sunarc.solarTimes(time.addDays(now, -1));
+  if (w.sunrise) {
+    var r = parseStamp(w.sunrise);
+    var s = parseStamp(w.sunset);
+    if (r != null && s != null) {
+      times.rise = r;
+      times.set = s;
+      times.zenith = Math.round((r + s) / 2);
+      times.dayLen = s - r;
+    }
+  }
+  if (w.ySunrise) {
+    var yr = parseStamp(w.ySunrise);
+    var ys = parseStamp(w.ySunset);
+    if (yr != null && ys != null) {
+      yTimes.rise = yr;
+      yTimes.set = ys;
+      yTimes.dayLen = ys - yr;
+    }
+  }
+  var delta = sunarc.durationDelta(times, yTimes);
+  var status = sunarc.statusLine(nowMin, times);
+  var hm = time.hourMinute(now);
+  var theme = time.themeName(now);
+  var qs = ctx.qs || "";
+  var src =
+    "/img/sunarc.png?d=" +
+    encodeURIComponent(time.ymd(now)) +
+    "&t=" +
+    encodeURIComponent(fmt.pad2(hm.hour) + fmt.pad2(hm.minute)) +
+    "&theme=" +
+    encodeURIComponent(theme) +
+    (qs ? "&" + qs.replace(/^\?/, "") : "");
+  var arc = ctx.skipSunPng
+    ? htmlArc(nowMin, times.rise, times.set)
+    : '<img class="sunarc-img" src="' +
+      render.attr(src) +
+      '" width="928" height="268" alt="" />';
+  var dayH = Math.floor(times.dayLen / 60);
+  var dayM = times.dayLen % 60;
+  var ghAm = sunarc.labelTime(times.rise - 45) + "–" + sunarc.labelTime(times.rise + 45);
+  var ghPm = sunarc.labelTime(times.set - 45) + "–" + sunarc.labelTime(times.set + 45);
+  var civil = sunarc.labelTime(times.set) + "–" + sunarc.labelTime(times.dusk);
+  var moon = sunarc.moonInfo(now);
+  var body =
+    '<div class="panel">' +
+    ui.header("Sol em Oeiras", status) +
+    '<table class="hero" width="100%" cellpadding="0" cellspacing="0"><tr>' +
+    ui.statCol("nascer", sunarc.labelTime(times.rise)) +
+    ui.statCol("agora", time.formatTime(now), "amber") +
+    ui.statCol("pôr", sunarc.labelTime(times.set)) +
+    '<td class="stat-col split" valign="top" align="right">' +
+    '<div class="hero-m">' +
+    render.escapeHtml(dayH + " h " + fmt.pad2(dayM) + " min") +
+    '</div><div class="label ' +
+    (delta.negative ? "accent-alert" : "accent-sage") +
+    '">' +
+    render.escapeHtml(delta.text) +
+    "</div></td></tr></table>" +
+    arc +
+    '<table class="footer-line" width="100%" cellpadding="0" cellspacing="0"><tr>' +
+    '<td valign="top"><div class="label">golden hour manhã</div><div class="value">' +
+    render.escapeHtml(ghAm) +
+    "</div></td>" +
+    '<td class="split" valign="top"><div class="label">golden hour tarde</div><div class="value accent-amber">' +
+    render.escapeHtml(ghPm) +
+    "</div></td>" +
+    '<td class="split" valign="top"><div class="label">crepúsculo civil</div><div class="value">' +
+    render.escapeHtml(civil) +
+    "</div></td>" +
+    '<td class="split" valign="top"><div class="label">lua</div><div class="value accent-slate">' +
+    render.escapeHtml(String(moon.pct) + "% · " + sunarc.labelTime(moon.rise)) +
+    "</div></td></tr></table></div>";
   return { title: "Sol", pluginName: "Nascer / pôr", body: body };
 }
 
-module.exports = { id: "sun", name: "Nascer / pôr", plugin: plugin };
+module.exports = { id: "sun", name: "Nascer / pôr", plugin: plugin, htmlArc: htmlArc };
