@@ -1,29 +1,21 @@
 "use strict";
 
-var render = require("../render");
-
-var DOT = ["sage", "sky", "amber", "alert"];
+var ui = require("../lib/ui");
 
 function plugin(ctx) {
   var items = (ctx.news || []).slice(0, 6);
   var rows = "";
   if (!items.length) {
-    rows = "<div class=\"empty\">Público indisponível neste momento.</div>";
+    rows = ui.item("icon-news", "Público indisponível", "tente no próximo refresh");
   } else {
-    items.forEach(function (item, i) {
-      rows +=
-        "<div class=\"news\"><span class=\"dot " +
-        DOT[i % DOT.length] +
-        "\"></span><span class=\"what\">" +
-        render.escapeHtml(item.title) +
-        "</span></div>";
+    items.forEach(function (item) {
+      rows += ui.item("icon-news", item.title, item.category || "Público");
     });
   }
   var body =
-    "<div class=\"panel\">" +
-    "<div class=\"kicker\">Notícias</div>" +
-    "<div class=\"title\">Público</div>" +
-    "<div class=\"list\">" +
+    '<div class="panel">' +
+    ui.titleBar("icon-news", "Público", "manchetes") +
+    '<div class="list">' +
     rows +
     "</div></div>";
   return { title: "Público", pluginName: "Público", body: body };

@@ -1,41 +1,32 @@
 "use strict";
 
-var render = require("../render");
+var ui = require("../lib/ui");
 
 function plugin(ctx) {
   var e = ctx.email || {};
   var people = "";
   (e.people || []).forEach(function (p) {
-    people +=
-      "<div class=\"ev\"><span class=\"what\">" +
-      render.escapeHtml(p.subject) +
-      "</span><span class=\"when\">" +
-      render.escapeHtml(p.from) +
-      "</span></div>";
+    people += ui.item("icon-people", p.subject, p.from);
   });
   var status;
   if (!e.configured) {
-    status =
-      "<div class=\"empty\">Email Meter à espera de IMAP (EMAIL_IMAP_USER / EMAIL_IMAP_PASS). Sem corpo de mensagens neste ecrã.</div>";
+    status = ui.item(
+      "icon-mail",
+      "Email Meter à espera de IMAP",
+      "EMAIL_IMAP_USER / EMAIL_IMAP_PASS · sem corpo de mensagens"
+    );
   } else {
     status =
-      "<table class=\"meters\" width=\"100%\"><tr>" +
-      "<td><div class=\"temp\">" +
-      render.escapeHtml(String(e.unseen)) +
-      "</div><div class=\"kicker\">não lidas</div></td>" +
-      "<td><div class=\"temp\">" +
-      render.escapeHtml(String(e.people.length)) +
-      "</div><div class=\"kicker\">pessoas</div></td>" +
-      "<td><div class=\"temp\">" +
-      render.escapeHtml(String(e.noise)) +
-      "</div><div class=\"kicker\">ruído</div></td>" +
+      '<table class="metrics" width="100%"><tr>' +
+      ui.metric("icon-mail", e.unseen, "não lidas") +
+      ui.metric("icon-people", e.people.length, "pessoas") +
+      ui.metric("icon-noise", e.noise, "ruído") +
       "</tr></table>" +
-      (people ? "<div class=\"list\">" + people + "</div>" : "<div class=\"sub\">sem threads de pessoas nas não-lidas recentes</div>");
+      (people || '<div class="label">sem threads de pessoas nas não-lidas recentes</div>');
   }
   var body =
-    "<div class=\"panel\">" +
-    "<div class=\"kicker\">Transformatiive</div>" +
-    "<div class=\"title\">Email Meter</div>" +
+    '<div class="panel">' +
+    ui.titleBar("icon-mail", "Email Meter", "Transformatiive") +
     status +
     "</div>";
   return { title: "Email", pluginName: "Email Meter", body: body };

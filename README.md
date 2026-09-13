@@ -8,9 +8,9 @@ Replaces the old lgdash renderer **in place**. Same Railway service, same public
 
 ## Playlist v1
 
-Agora → Calendário → Tempo → Avisos IPMA → Email Meter → Público → Dias do ano.
+Agora → Calendário → Tempo → Eletricidade + dia → Nascer/pôr Oeiras → Avisos IPMA → Email Meter → Público → Dias do ano.
 
-Toque na coluna esquerda (12%) = anterior; direita = seguinte. O centro não navega. Auto-avanço ~75 s, pausado 2 min após um toque. Tema night 20:30–08:00 Europe/Lisbon.
+Toque na coluna esquerda (12%) = anterior; direita = seguinte. O centro não navega. Auto-avanço ~75 s, pausado 2 min após um toque. Tema night 20:30–08:00 Europe/Lisbon. Dia: fundo cinza-claro/branco. Noite: fundo escuro com contraste.
 
 Health: `/health` (sem token). Playlist: `/` e `/legacy.html` (com `?k=`).
 
@@ -18,4 +18,4 @@ Health: `/health` (sem token). Playlist: `/` e `/legacy.html` (com `?k=`).
 
 Preserve on Railway (do not rotate): `DASH_TOKEN`, `PUSH_TOKEN`.
 
-Also used: `CALENDAR_ICS_URL`, optional `EMAIL_IMAP_USER` / `EMAIL_IMAP_PASS`.
+Also used: `CALENDAR_ICS_URL`, optional `EMAIL_IMAP_USER` / `EMAIL_IMAP_PASS`. Location defaults to Oeiras.

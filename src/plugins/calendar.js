@@ -1,38 +1,31 @@
 "use strict";
 
-var render = require("../render");
 var time = require("../time");
+var ui = require("../lib/ui");
 
 function plugin(ctx) {
-  var now = ctx.now;
   var cal = ctx.calendar || {};
   var rows = "";
-  var list = (cal.events || []).slice(0, 8);
+  var list = (cal.events || []).slice(0, 7);
   if (!cal.configured) {
-    rows =
-      "<div class=\"empty\">Calendário ainda sem ICS. Definir CALENDAR_ICS_URL no Railway.</div>";
+    rows = ui.item("icon-cal", "Calendário sem ICS", "Definir CALENDAR_ICS_URL no Railway");
   } else if (!list.length) {
-    rows = "<div class=\"empty sage\">Nada na agenda nas próximas 36 horas.</div>";
+    rows = ui.item("icon-ok", "Agenda livre", "Nada nas próximas 36 horas");
   } else {
     list.forEach(function (ev) {
       var when = ev.allDay ? "todo o dia" : time.formatTime(ev.start);
-      var cls = "ev kind-" + ev.kind + (ev.happening ? " now" : "");
-      if (ev.timesheet) cls += " compact";
-      rows +=
-        "<div class=\"" +
-        cls +
-        "\"><span class=\"bar\"></span><span class=\"when\">" +
-        render.escapeHtml(when) +
-        "</span><span class=\"what\">" +
-        render.escapeHtml(ev.summary) +
-        "</span></div>";
+      rows += ui.item(
+        ui.kindIcon(ev.kind),
+        ev.summary,
+        when + (ev.calendar ? " · " + ev.calendar : ""),
+        ev.happening ? "hot" : ev.timesheet ? "compact" : ""
+      );
     });
   }
   var body =
-    "<div class=\"panel\">" +
-    "<div class=\"kicker\">Calendário</div>" +
-    "<div class=\"title\">Hoje e a seguir</div>" +
-    "<div class=\"list\">" +
+    '<div class="panel">' +
+    ui.titleBar("icon-cal", "Calendário", "hoje e a seguir") +
+    '<div class="list">' +
     rows +
     "</div></div>";
   return { title: "Calendário", pluginName: "Calendário", body: body };
