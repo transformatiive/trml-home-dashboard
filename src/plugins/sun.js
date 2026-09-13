@@ -33,17 +33,14 @@ function plugin(ctx) {
     var elev = Math.sin(Math.PI * t);
     var pad = Math.round((1 - elev) * 90);
     var isNow = nowMin >= riseM && nowMin <= setM && Math.abs(min - nowMin) < dayLen / slots;
-    var icon = i === 0 || i === slots - 1 ? "wx-sun" : isNow ? "wx-sun" : "icon-dot";
-    var size = isNow ? 40 : 24;
     cells +=
-      '<td class="sunslot' +
-      (isNow ? " now" : "") +
-      '" valign="top" align="center">' +
+      '<td class="sunslot" valign="top" align="center">' +
       '<div class="sunpad" style="height:' +
       pad +
       'px"></div>' +
-      ui.img(icon, size) +
-      "</td>";
+      '<div class="sun-dot' +
+      (isNow ? " now" : "") +
+      '">&nbsp;</div></td>';
   }
   var afterSet = nowMin > setM;
   var beforeRise = nowMin < riseM;
@@ -55,12 +52,12 @@ function plugin(ctx) {
     status = "dia · pôr-do-sol daqui a " + Math.round(left / 60) + " h " + (left % 60) + " min";
   }
   var body =
-    '<div class="panel sunpanel">' +
-    ui.titleBar("wx-sun", "Sol em Oeiras", time.formatDateLong(now)) +
+    '<div class="panel">' +
+    ui.titleBar("Sol em Oeiras", time.formatDateLong(now)) +
     '<table class="metrics" width="100%"><tr>' +
-    ui.metric("wx-sun", rise.label, "nascer") +
-    ui.metric("icon-clock", time.formatTime(now), "agora") +
-    ui.metric("wx-moon", set.label, "pôr") +
+    ui.metric(rise.label, "nascer") +
+    ui.metric(time.formatTime(now), "agora") +
+    ui.metric(set.label, "pôr") +
     "</tr></table>" +
     '<div class="label">' +
     render.escapeHtml(status) +
@@ -68,8 +65,7 @@ function plugin(ctx) {
     '<table class="sunarc" width="100%" cellpadding="0" cellspacing="0"><tr>' +
     cells +
     "</tr></table>" +
-    '<table class="horizon" width="100%"><tr><td class="horizon-line">&nbsp;</td></tr></table>' +
-    '<div class="label">Arco do dia · Oeiras, Portugal</div></div>';
+    '<table class="horizon" width="100%"><tr><td class="horizon-line">&nbsp;</td></tr></table></div>';
   return { title: "Sol", pluginName: "Nascer / pôr", body: body };
 }
 

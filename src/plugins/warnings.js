@@ -6,20 +6,21 @@ function plugin(ctx) {
   var w = ctx.warnings || {};
   var rows = "";
   if (!w.items || !w.items.length) {
-    rows = ui.item("icon-ok", "Lisboa sem avisos IPMA", "Céu e vento estáveis para o cão e para a estrada");
+    rows = ui.item("Lisboa sem avisos IPMA", "céu e vento estáveis", "ok", "ok");
   } else {
     w.items.forEach(function (item) {
+      var tone = item.color === "alert" ? "alert" : "warn";
       rows += ui.item(
-        "icon-warn",
         item.type,
         item.level + (item.text ? " · " + item.text : ""),
-        item.color === "alert" ? "hot" : ""
+        tone,
+        tone
       );
     });
   }
   var body =
     '<div class="panel">' +
-    ui.titleBar(w.items && w.items.length ? "icon-warn" : "icon-ok", "Avisos IPMA", w.area || "LIS") +
+    ui.titleBar("Avisos IPMA", w.area || "LIS") +
     '<div class="list">' +
     rows +
     "</div></div>";
