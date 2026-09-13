@@ -17,10 +17,9 @@ function wrap(opts) {
   var title = opts.title || "LG Dash";
   var pluginName = opts.pluginName || "";
   var index = opts.index || 1;
-  var total = opts.total || 7;
+  var total = opts.total || 9;
   var prevHref = opts.prevHref || "/";
   var nextHref = opts.nextHref || "/";
-  var sky = opts.sky || "";
   var updated = opts.updated || "";
   var body = opts.body || "";
   var rotate = opts.rotateHint !== false;
@@ -45,11 +44,8 @@ function wrap(opts) {
     "</head>\n" +
     "<body class=\"theme-" +
     attr(theme) +
-    (sky ? " sky-" + attr(sky) : "") +
     "\">\n" +
-    (rotate
-      ? "<div class=\"rotate\">Rode o iPad para landscape.</div>\n"
-      : "") +
+    (rotate ? "<div class=\"rotate\">Rode o iPad para landscape.</div>\n" : "") +
     "<table class=\"shell\" width=\"1024\" height=\"768\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">\n" +
     "<tr>\n" +
     "<td class=\"zone zone-prev\" id=\"zonePrev\" width=\"123\" height=\"768\" valign=\"middle\">" +
