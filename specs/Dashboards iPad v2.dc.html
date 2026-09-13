@@ -1,0 +1,1366 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="design_doc_mode" content="canvas">
+<style>
+  body { margin:0; background:#E4DFD5; }
+  a { color:#1C1914; } a:hover { color:#B45309; }
+</style>
+</helmet>
+
+<section style="display:flex;flex-direction:column;gap:52px;padding:52px;font-family:Helvetica, Arial, sans-serif">
+
+  <div style="max-width:900px;display:flex;flex-direction:column;gap:6px">
+    <span style="font-size:13px;font-weight:bold;letter-spacing:3px;text-transform:uppercase;color:#7A7468">Ronda 2 · alinhado com trml-home-dashboard</span>
+    <span style="font-size:15px;color:#4A453E;line-height:1.5">Helvetica para rótulos, Georgia para números, paleta de <a href="https://github.com/transformatiive/trml-home-dashboard">screen.css</a>, full bleed 1024×768 sem barra de título. Ícones desenhados como marcas geométricas — no dispositivo saem de <span style="font-family:Georgia,Times,serif">/icons/*.png</span>.</span>
+  </div>
+
+  <div id="2a" style="display:flex;flex-direction:column;gap:14px">
+    <div style="display:flex;align-items:center;gap:12px">
+      <span style="font-family:Georgia,Times,serif;font-size:13px;padding:3px 8px;border:1px solid #B8B1A6;color:#4A453E">2a</span>
+      <span style="font-size:16px;font-weight:bold">Tempo — Oeiras</span>
+      <span style="font-size:13px;color:#8A8478">/p/weather</span>
+    </div>
+    <div style="display:flex;gap:24px;flex-wrap:wrap">
+
+      <div data-theme="day" style="flex:none;width:1024px;height:768px;overflow:hidden;background:#F4F1EA;color:#1C1914;display:flex;flex-direction:column;padding:44px 48px 36px;box-sizing:border-box;box-shadow:0 1px 3px rgba(0,0,0,.14)">
+        <div style="flex:none;display:flex;align-items:baseline;justify-content:space-between">
+          <span style="font-size:13px;font-weight:bold;letter-spacing:3px;text-transform:uppercase;color:#7A7468">Oeiras</span>
+          <span style="font-size:15px;color:#7A7468">domingo, 13 de setembro · 08:42</span>
+        </div>
+
+        <div style="flex:none;display:flex;align-items:flex-start;gap:56px;margin-top:26px">
+          <div style="flex:none;display:flex;flex-direction:column">
+            <svg width="64" height="64" viewBox="0 0 64 64">
+              <circle cx="24" cy="26" r="11" fill="#D4A017"></circle>
+              <rect x="22" y="4" width="4" height="8" fill="#D4A017"></rect>
+              <rect x="2" y="24" width="8" height="4" fill="#D4A017"></rect>
+              <rect x="7" y="9" width="4" height="8" fill="#D4A017" transform="rotate(-45 9 13)"></rect>
+              <circle cx="40" cy="44" r="13" fill="#8A8478"></circle>
+              <circle cx="24" cy="47" r="10" fill="#8A8478"></circle>
+              <rect x="14" y="47" width="40" height="10" fill="#8A8478"></rect>
+            </svg>
+            <div style="font-family:Georgia,Times,serif;font-size:168px;line-height:.88;letter-spacing:-6px;margin-top:14px">17°</div>
+            <div style="font-size:22px;color:#1C1914;margin-top:8px">Céu pouco nublado</div>
+            <div style="font-size:15px;color:#7A7468;margin-top:4px">sensação 15° · máx 21° mín 14°</div>
+          </div>
+          <div style="flex:1;display:flex;flex-direction:column;gap:22px;padding-top:8px">
+            <div style="display:flex;align-items:baseline;gap:14px;border-bottom:1px solid #DDD6C8;padding-bottom:14px">
+              <span style="font-size:15px;color:#7A7468;width:118px">vento</span>
+              <span style="font-family:Georgia,Times,serif;font-size:44px;line-height:1">18</span>
+              <span style="font-size:15px;color:#7A7468">km/h NO</span>
+            </div>
+            <div style="display:flex;align-items:baseline;gap:14px;border-bottom:1px solid #DDD6C8;padding-bottom:14px">
+              <span style="font-size:15px;color:#7A7468;width:118px">humidade</span>
+              <span style="font-family:Georgia,Times,serif;font-size:44px;line-height:1">72</span>
+              <span style="font-size:15px;color:#7A7468">%</span>
+            </div>
+            <div style="display:flex;align-items:baseline;gap:14px;border-bottom:1px solid #DDD6C8;padding-bottom:14px">
+              <span style="font-size:15px;color:#7A7468;width:118px">UV</span>
+              <span style="font-family:Georgia,Times,serif;font-size:44px;line-height:1;color:#B45309">5</span>
+              <span style="font-size:15px;color:#7A7468">moderado</span>
+            </div>
+            <div style="display:flex;align-items:baseline;gap:14px">
+              <span style="font-size:15px;color:#7A7468;width:118px">chuva 24 h</span>
+              <span style="font-family:Georgia,Times,serif;font-size:44px;line-height:1;color:#5B6B7A">0,4</span>
+              <span style="font-size:15px;color:#7A7468">mm</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;margin-top:22px">
+          <span style="font-size:15px;color:#7A7468">próximas horas</span>
+          <div style="display:flex;align-items:flex-end;gap:2px;height:128px;margin-top:10px">
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:7px">
+              <span style="font-family:Georgia,Times,serif;font-size:24px">18°</span>
+              <div style="width:22px;height:34px;background:#3F6B4A"></div>
+              <span style="font-size:14px;color:#7A7468">09h</span>
+            </div>
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:7px">
+              <span style="font-family:Georgia,Times,serif;font-size:24px">21°</span>
+              <div style="width:22px;height:52px;background:#3F6B4A"></div>
+              <span style="font-size:14px;color:#7A7468">11h</span>
+            </div>
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:7px">
+              <span style="font-family:Georgia,Times,serif;font-size:24px">24°</span>
+              <div style="width:22px;height:70px;background:#B45309"></div>
+              <span style="font-size:14px;color:#7A7468">13h</span>
+            </div>
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:7px">
+              <span style="font-family:Georgia,Times,serif;font-size:24px;text-decoration:underline">25°</span>
+              <div style="width:22px;height:76px;background:#B45309"></div>
+              <span style="font-size:14px;color:#1C1914;text-decoration:underline">15h</span>
+            </div>
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:7px">
+              <span style="font-family:Georgia,Times,serif;font-size:24px">23°</span>
+              <div style="width:22px;height:64px;background:#B45309"></div>
+              <span style="font-size:14px;color:#7A7468">17h</span>
+            </div>
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:7px">
+              <span style="font-family:Georgia,Times,serif;font-size:24px">20°</span>
+              <div style="width:22px;height:46px;background:#3F6B4A"></div>
+              <span style="font-size:14px;color:#7A7468">19h</span>
+            </div>
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:7px">
+              <span style="font-family:Georgia,Times,serif;font-size:24px;color:#5B6B7A">17°</span>
+              <div style="width:22px;height:30px;background:#5B6B7A"></div>
+              <span style="font-size:14px;color:#7A7468">21h</span>
+            </div>
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:7px">
+              <span style="font-family:Georgia,Times,serif;font-size:24px;color:#5B6B7A">16°</span>
+              <div style="width:22px;height:24px;background:#5B6B7A"></div>
+              <span style="font-size:14px;color:#7A7468">23h</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="flex:none;display:flex;gap:0;margin-top:28px;border-top:1px solid #DDD6C8;padding-top:20px">
+          <div style="flex:1;display:flex;align-items:center;gap:14px">
+            <svg width="34" height="34" viewBox="0 0 34 34"><circle cx="17" cy="17" r="9" fill="#D4A017"></circle><rect x="15" y="0" width="4" height="6" fill="#D4A017"></rect><rect x="15" y="28" width="4" height="6" fill="#D4A017"></rect><rect x="0" y="15" width="6" height="4" fill="#D4A017"></rect><rect x="28" y="15" width="6" height="4" fill="#D4A017"></rect></svg>
+            <div style="display:flex;flex-direction:column">
+              <span style="font-size:15px;color:#7A7468">seg 14/09</span>
+              <span style="font-family:Georgia,Times,serif;font-size:26px;line-height:1.2">25° / 14°</span>
+              <span style="font-size:14px;color:#7A7468">céu limpo</span>
+            </div>
+          </div>
+          <div style="flex:1;display:flex;align-items:center;gap:14px;border-left:1px solid #DDD6C8;padding-left:26px">
+            <svg width="34" height="34" viewBox="0 0 34 34"><circle cx="13" cy="13" r="7" fill="#D4A017"></circle><circle cx="22" cy="21" r="9" fill="#8A8478"></circle><circle cx="12" cy="23" r="7" fill="#8A8478"></circle><rect x="5" y="23" width="26" height="7" fill="#8A8478"></rect></svg>
+            <div style="display:flex;flex-direction:column">
+              <span style="font-size:15px;color:#7A7468">ter 15/09</span>
+              <span style="font-family:Georgia,Times,serif;font-size:26px;line-height:1.2">28° / 16°</span>
+              <span style="font-size:14px;color:#7A7468">pouco nublado</span>
+            </div>
+          </div>
+          <div style="flex:1;display:flex;align-items:center;gap:14px;border-left:1px solid #DDD6C8;padding-left:26px">
+            <svg width="34" height="34" viewBox="0 0 34 34"><circle cx="21" cy="13" r="9" fill="#5B6B7A"></circle><circle cx="11" cy="15" r="7" fill="#5B6B7A"></circle><rect x="4" y="15" width="26" height="7" fill="#5B6B7A"></rect><rect x="9" y="25" width="3" height="9" fill="#5B6B7A"></rect><rect x="16" y="25" width="3" height="9" fill="#5B6B7A"></rect><rect x="23" y="25" width="3" height="9" fill="#5B6B7A"></rect></svg>
+            <div style="display:flex;flex-direction:column">
+              <span style="font-size:15px;color:#7A7468">qua 16/09</span>
+              <span style="font-family:Georgia,Times,serif;font-size:26px;line-height:1.2">20° / 13°</span>
+              <span style="font-size:14px;color:#5B6B7A">chuva fraca</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div data-theme="night" style="flex:none;width:1024px;height:768px;overflow:hidden;background:#161412;color:#F3EFE6;display:flex;flex-direction:column;padding:44px 48px 36px;box-sizing:border-box;box-shadow:0 1px 3px rgba(0,0,0,.35)">
+        <div style="flex:none;display:flex;align-items:baseline;justify-content:space-between">
+          <span style="font-size:13px;font-weight:bold;letter-spacing:3px;text-transform:uppercase;color:#9A9388">Oeiras</span>
+          <span style="font-size:15px;color:#9A9388">domingo, 13 de setembro · 08:42</span>
+        </div>
+
+        <div style="flex:none;display:flex;align-items:flex-start;gap:56px;margin-top:26px">
+          <div style="flex:none;display:flex;flex-direction:column">
+            <svg width="64" height="64" viewBox="0 0 64 64">
+              <circle cx="24" cy="26" r="11" fill="#D4A017"></circle>
+              <rect x="22" y="4" width="4" height="8" fill="#D4A017"></rect>
+              <rect x="2" y="24" width="8" height="4" fill="#D4A017"></rect>
+              <rect x="7" y="9" width="4" height="8" fill="#D4A017" transform="rotate(-45 9 13)"></rect>
+              <circle cx="40" cy="44" r="13" fill="#8A8378"></circle>
+              <circle cx="24" cy="47" r="10" fill="#8A8378"></circle>
+              <rect x="14" y="47" width="40" height="10" fill="#8A8378"></rect>
+            </svg>
+            <div style="font-family:Georgia,Times,serif;font-size:168px;line-height:.88;letter-spacing:-6px;margin-top:14px">17°</div>
+            <div style="font-size:22px;color:#F3EFE6;margin-top:8px">Céu pouco nublado</div>
+            <div style="font-size:15px;color:#9A9388;margin-top:4px">sensação 15° · máx 21° mín 14°</div>
+          </div>
+          <div style="flex:1;display:flex;flex-direction:column;gap:22px;padding-top:8px">
+            <div style="display:flex;align-items:baseline;gap:14px;border-bottom:1px solid #3A342E;padding-bottom:14px">
+              <span style="font-size:15px;color:#9A9388;width:118px">vento</span>
+              <span style="font-family:Georgia,Times,serif;font-size:44px;line-height:1">18</span>
+              <span style="font-size:15px;color:#9A9388">km/h NO</span>
+            </div>
+            <div style="display:flex;align-items:baseline;gap:14px;border-bottom:1px solid #3A342E;padding-bottom:14px">
+              <span style="font-size:15px;color:#9A9388;width:118px">humidade</span>
+              <span style="font-family:Georgia,Times,serif;font-size:44px;line-height:1">72</span>
+              <span style="font-size:15px;color:#9A9388">%</span>
+            </div>
+            <div style="display:flex;align-items:baseline;gap:14px;border-bottom:1px solid #3A342E;padding-bottom:14px">
+              <span style="font-size:15px;color:#9A9388;width:118px">UV</span>
+              <span style="font-family:Georgia,Times,serif;font-size:44px;line-height:1;color:#E0A050">5</span>
+              <span style="font-size:15px;color:#9A9388">moderado</span>
+            </div>
+            <div style="display:flex;align-items:baseline;gap:14px">
+              <span style="font-size:15px;color:#9A9388;width:118px">chuva 24 h</span>
+              <span style="font-family:Georgia,Times,serif;font-size:44px;line-height:1;color:#8FA3B5">0,4</span>
+              <span style="font-size:15px;color:#9A9388">mm</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;margin-top:22px">
+          <span style="font-size:15px;color:#9A9388">próximas horas</span>
+          <div style="display:flex;align-items:flex-end;gap:2px;height:128px;margin-top:10px">
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:7px">
+              <span style="font-family:Georgia,Times,serif;font-size:24px">18°</span>
+              <div style="width:22px;height:34px;background:#9FBFA4"></div>
+              <span style="font-size:14px;color:#9A9388">09h</span>
+            </div>
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:7px">
+              <span style="font-family:Georgia,Times,serif;font-size:24px">21°</span>
+              <div style="width:22px;height:52px;background:#9FBFA4"></div>
+              <span style="font-size:14px;color:#9A9388">11h</span>
+            </div>
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:7px">
+              <span style="font-family:Georgia,Times,serif;font-size:24px">24°</span>
+              <div style="width:22px;height:70px;background:#E0A050"></div>
+              <span style="font-size:14px;color:#9A9388">13h</span>
+            </div>
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:7px">
+              <span style="font-family:Georgia,Times,serif;font-size:24px;text-decoration:underline">25°</span>
+              <div style="width:22px;height:76px;background:#E0A050"></div>
+              <span style="font-size:14px;color:#F3EFE6;text-decoration:underline">15h</span>
+            </div>
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:7px">
+              <span style="font-family:Georgia,Times,serif;font-size:24px">23°</span>
+              <div style="width:22px;height:64px;background:#E0A050"></div>
+              <span style="font-size:14px;color:#9A9388">17h</span>
+            </div>
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:7px">
+              <span style="font-family:Georgia,Times,serif;font-size:24px">20°</span>
+              <div style="width:22px;height:46px;background:#9FBFA4"></div>
+              <span style="font-size:14px;color:#9A9388">19h</span>
+            </div>
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:7px">
+              <span style="font-family:Georgia,Times,serif;font-size:24px;color:#8FA3B5">17°</span>
+              <div style="width:22px;height:30px;background:#8FA3B5"></div>
+              <span style="font-size:14px;color:#9A9388">21h</span>
+            </div>
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:7px">
+              <span style="font-family:Georgia,Times,serif;font-size:24px;color:#8FA3B5">16°</span>
+              <div style="width:22px;height:24px;background:#8FA3B5"></div>
+              <span style="font-size:14px;color:#9A9388">23h</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="flex:none;display:flex;gap:0;margin-top:28px;border-top:1px solid #3A342E;padding-top:20px">
+          <div style="flex:1;display:flex;align-items:center;gap:14px">
+            <svg width="34" height="34" viewBox="0 0 34 34"><circle cx="17" cy="17" r="9" fill="#D4A017"></circle><rect x="15" y="0" width="4" height="6" fill="#D4A017"></rect><rect x="15" y="28" width="4" height="6" fill="#D4A017"></rect><rect x="0" y="15" width="6" height="4" fill="#D4A017"></rect><rect x="28" y="15" width="6" height="4" fill="#D4A017"></rect></svg>
+            <div style="display:flex;flex-direction:column">
+              <span style="font-size:15px;color:#9A9388">seg 14/09</span>
+              <span style="font-family:Georgia,Times,serif;font-size:26px;line-height:1.2">25° / 14°</span>
+              <span style="font-size:14px;color:#9A9388">céu limpo</span>
+            </div>
+          </div>
+          <div style="flex:1;display:flex;align-items:center;gap:14px;border-left:1px solid #3A342E;padding-left:26px">
+            <svg width="34" height="34" viewBox="0 0 34 34"><circle cx="13" cy="13" r="7" fill="#D4A017"></circle><circle cx="22" cy="21" r="9" fill="#8A8378"></circle><circle cx="12" cy="23" r="7" fill="#8A8378"></circle><rect x="5" y="23" width="26" height="7" fill="#8A8378"></rect></svg>
+            <div style="display:flex;flex-direction:column">
+              <span style="font-size:15px;color:#9A9388">ter 15/09</span>
+              <span style="font-family:Georgia,Times,serif;font-size:26px;line-height:1.2">28° / 16°</span>
+              <span style="font-size:14px;color:#9A9388">pouco nublado</span>
+            </div>
+          </div>
+          <div style="flex:1;display:flex;align-items:center;gap:14px;border-left:1px solid #3A342E;padding-left:26px">
+            <svg width="34" height="34" viewBox="0 0 34 34"><circle cx="21" cy="13" r="9" fill="#8FA3B5"></circle><circle cx="11" cy="15" r="7" fill="#8FA3B5"></circle><rect x="4" y="15" width="26" height="7" fill="#8FA3B5"></rect><rect x="9" y="25" width="3" height="9" fill="#8FA3B5"></rect><rect x="16" y="25" width="3" height="9" fill="#8FA3B5"></rect><rect x="23" y="25" width="3" height="9" fill="#8FA3B5"></rect></svg>
+            <div style="display:flex;flex-direction:column">
+              <span style="font-size:15px;color:#9A9388">qua 16/09</span>
+              <span style="font-family:Georgia,Times,serif;font-size:26px;line-height:1.2">20° / 13°</span>
+              <span style="font-size:14px;color:#8FA3B5">chuva fraca</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div id="2b" style="display:flex;flex-direction:column;gap:14px">
+    <div style="display:flex;align-items:center;gap:12px">
+      <span style="font-family:Georgia,Times,serif;font-size:13px;padding:3px 8px;border:1px solid #B8B1A6;color:#4A453E">2b</span>
+      <span style="font-size:16px;font-weight:bold">Ciclo solar</span>
+      <span style="font-size:13px;color:#8A8478">/p/sun</span>
+    </div>
+    <div style="display:flex;gap:24px;flex-wrap:wrap">
+
+      <div data-theme="day" style="flex:none;width:1024px;height:768px;overflow:hidden;background:#F4F1EA;color:#1C1914;display:flex;flex-direction:column;padding:44px 48px 36px;box-sizing:border-box;box-shadow:0 1px 3px rgba(0,0,0,.14)">
+        <div style="flex:none;display:flex;align-items:baseline;justify-content:space-between">
+          <span style="font-size:13px;font-weight:bold;letter-spacing:3px;text-transform:uppercase;color:#7A7468">Sol em Oeiras</span>
+          <span style="font-size:15px;color:#7A7468">dia · pôr-do-sol daqui a 5 h 51 min</span>
+        </div>
+
+        <div style="flex:none;display:flex;align-items:flex-end;gap:64px;margin-top:24px">
+          <div style="display:flex;flex-direction:column">
+            <span style="font-size:15px;color:#7A7468">nascer</span>
+            <span style="font-family:Georgia,Times,serif;font-size:62px;line-height:1.05">07:34</span>
+          </div>
+          <div style="display:flex;flex-direction:column">
+            <span style="font-size:15px;color:#7A7468">agora</span>
+            <span style="font-family:Georgia,Times,serif;font-size:62px;line-height:1.05;color:#B45309">14:20</span>
+          </div>
+          <div style="display:flex;flex-direction:column">
+            <span style="font-size:15px;color:#7A7468">pôr</span>
+            <span style="font-family:Georgia,Times,serif;font-size:62px;line-height:1.05">20:11</span>
+          </div>
+          <div style="flex:1;display:flex;flex-direction:column;align-items:flex-end">
+            <span style="font-size:15px;color:#7A7468">duração do dia</span>
+            <span style="font-family:Georgia,Times,serif;font-size:42px;line-height:1.1">12 h 37</span>
+            <span style="font-size:15px;color:#B42318">−2 min 51 s que ontem</span>
+          </div>
+        </div>
+
+        <div style="flex:1;display:flex;flex-direction:column;justify-content:center;margin-top:12px">
+          <svg viewBox="0 0 928 268" style="width:100%;height:268px;display:block">
+            <rect x="0" y="0" width="152" height="196" fill="#D8D2C4"></rect>
+            <rect x="152" y="0" width="23" height="196" fill="#E3D9C6"></rect>
+            <rect x="175" y="0" width="616" height="196" fill="#EFEADF"></rect>
+            <rect x="791" y="0" width="22" height="196" fill="#E3D9C6"></rect>
+            <rect x="813" y="0" width="115" height="196" fill="#D8D2C4"></rect>
+            <rect x="175" y="0" width="36" height="196" fill="#E8D9B8"></rect>
+            <rect x="754" y="0" width="37" height="196" fill="#E8D9B8"></rect>
+            <path d="M0 250 Q87 238 174.5 196" fill="none" stroke="#C7C0B1" stroke-width="3" stroke-dasharray="2 6"></path>
+            <path d="M790.7 196 Q866 238 928 250" fill="none" stroke="#C7C0B1" stroke-width="3" stroke-dasharray="2 6"></path>
+            <path d="M174.5 196 Q482.6 -100 790.7 196" fill="none" stroke="#C4A35A" stroke-width="3"></path>
+            <line x1="0" y1="196" x2="928" y2="196" stroke="#DDD6C8" stroke-width="1"></line>
+            <line x1="174.5" y1="188" x2="174.5" y2="204" stroke="#1C1914" stroke-width="2"></line>
+            <line x1="790.7" y1="188" x2="790.7" y2="204" stroke="#1C1914" stroke-width="2"></line>
+            <line x1="504.9" y1="62" x2="504.9" y2="196" stroke="#B45309" stroke-width="1" stroke-dasharray="3 4"></line>
+            <circle cx="504.9" cy="48.8" r="14" fill="#D4A017"></circle>
+            <rect x="502.4" y="20" width="5" height="10" fill="#D4A017"></rect>
+            <rect x="502.4" y="68" width="5" height="10" fill="#D4A017"></rect>
+            <rect x="473" y="46.3" width="10" height="5" fill="#D4A017"></rect>
+            <rect x="527" y="46.3" width="10" height="5" fill="#D4A017"></rect>
+            <rect x="481" y="24" width="5" height="10" fill="#D4A017" transform="rotate(-45 483.5 29)"></rect>
+            <rect x="524" y="64" width="5" height="10" fill="#D4A017" transform="rotate(-45 526.5 69)"></rect>
+            <rect x="524" y="24" width="5" height="10" fill="#D4A017" transform="rotate(45 526.5 29)"></rect>
+            <rect x="481" y="64" width="5" height="10" fill="#D4A017" transform="rotate(45 483.5 69)"></rect>
+            <circle cx="872" cy="74" r="13" fill="#8A8478"></circle>
+            <circle cx="879" cy="69" r="11" fill="#D8D2C4"></circle>
+            <circle cx="66" cy="92" r="2" fill="#8A8478"></circle>
+            <circle cx="108" cy="58" r="2" fill="#8A8478"></circle>
+            <circle cx="43" cy="46" r="2" fill="#8A8478"></circle>
+            <circle cx="898" cy="128" r="2" fill="#8A8478"></circle>
+            <circle cx="845" cy="150" r="2" fill="#8A8478"></circle>
+            <text x="504.9" y="14" text-anchor="middle" font-family="Georgia, Times, serif" font-size="21" fill="#B45309">14:20</text>
+            <text x="174.5" y="222" text-anchor="middle" font-family="Georgia, Times, serif" font-size="17" fill="#1C1914">07:34</text>
+            <text x="790.7" y="222" text-anchor="middle" font-family="Georgia, Times, serif" font-size="17" fill="#1C1914">20:11</text>
+            <text x="76" y="222" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#7A7468">noite</text>
+            <text x="870" y="222" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#7A7468">noite</text>
+            <text x="193" y="182" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#7A7468">gold</text>
+            <text x="772" y="182" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#7A7468">gold</text>
+            <text x="340" y="222" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#7A7468">10h</text>
+            <text x="482" y="222" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#7A7468">13h 52 · zénite</text>
+            <text x="628" y="222" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#7A7468">17h</text>
+            <text x="464" y="252" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#B45309">54 % do dia decorrido · faltam 5 h 51 min de luz</text>
+          </svg>
+        </div>
+
+        <div style="flex:none;display:flex;margin-top:24px;border-top:1px solid #DDD6C8;padding-top:20px">
+          <div style="flex:1;display:flex;flex-direction:column;gap:5px">
+            <span style="font-size:14px;color:#7A7468">golden hour manhã</span>
+            <span style="font-family:Georgia,Times,serif;font-size:28px;line-height:1">07:34–08:19</span>
+          </div>
+          <div style="flex:1;display:flex;flex-direction:column;gap:5px;border-left:1px solid #DDD6C8;padding-left:24px">
+            <span style="font-size:14px;color:#7A7468">golden hour tarde</span>
+            <span style="font-family:Georgia,Times,serif;font-size:28px;line-height:1;color:#B45309">19:26–20:11</span>
+          </div>
+          <div style="flex:1;display:flex;flex-direction:column;gap:5px;border-left:1px solid #DDD6C8;padding-left:24px">
+            <span style="font-size:14px;color:#7A7468">crepúsculo civil</span>
+            <span style="font-family:Georgia,Times,serif;font-size:28px;line-height:1">20:11–20:38</span>
+          </div>
+          <div style="flex:1;display:flex;flex-direction:column;gap:5px;border-left:1px solid #DDD6C8;padding-left:24px">
+            <span style="font-size:14px;color:#7A7468">lua · 42 % crescente</span>
+            <span style="font-family:Georgia,Times,serif;font-size:28px;line-height:1;color:#5B6B7A">nasce 13:58</span>
+          </div>
+        </div>
+      </div>
+
+      <div data-theme="night" style="flex:none;width:1024px;height:768px;overflow:hidden;background:#161412;color:#F3EFE6;display:flex;flex-direction:column;padding:44px 48px 36px;box-sizing:border-box;box-shadow:0 1px 3px rgba(0,0,0,.35)">
+        <div style="flex:none;display:flex;align-items:baseline;justify-content:space-between">
+          <span style="font-size:13px;font-weight:bold;letter-spacing:3px;text-transform:uppercase;color:#9A9388">Sol em Oeiras</span>
+          <span style="font-size:15px;color:#9A9388">dia · pôr-do-sol daqui a 5 h 51 min</span>
+        </div>
+
+        <div style="flex:none;display:flex;align-items:flex-end;gap:64px;margin-top:24px">
+          <div style="display:flex;flex-direction:column">
+            <span style="font-size:15px;color:#9A9388">nascer</span>
+            <span style="font-family:Georgia,Times,serif;font-size:62px;line-height:1.05">07:34</span>
+          </div>
+          <div style="display:flex;flex-direction:column">
+            <span style="font-size:15px;color:#9A9388">agora</span>
+            <span style="font-family:Georgia,Times,serif;font-size:62px;line-height:1.05;color:#E0A050">14:20</span>
+          </div>
+          <div style="display:flex;flex-direction:column">
+            <span style="font-size:15px;color:#9A9388">pôr</span>
+            <span style="font-family:Georgia,Times,serif;font-size:62px;line-height:1.05">20:11</span>
+          </div>
+          <div style="flex:1;display:flex;flex-direction:column;align-items:flex-end">
+            <span style="font-size:15px;color:#9A9388">duração do dia</span>
+            <span style="font-family:Georgia,Times,serif;font-size:42px;line-height:1.1">12 h 37</span>
+            <span style="font-size:15px;color:#F0A8A0">−2 min 51 s que ontem</span>
+          </div>
+        </div>
+
+        <div style="flex:1;display:flex;flex-direction:column;justify-content:center;margin-top:12px">
+          <svg viewBox="0 0 928 268" style="width:100%;height:268px;display:block">
+            <rect x="0" y="0" width="152" height="196" fill="#100E0C"></rect>
+            <rect x="152" y="0" width="23" height="196" fill="#231F1A"></rect>
+            <rect x="175" y="0" width="616" height="196" fill="#1E1B18"></rect>
+            <rect x="791" y="0" width="22" height="196" fill="#231F1A"></rect>
+            <rect x="813" y="0" width="115" height="196" fill="#100E0C"></rect>
+            <rect x="175" y="0" width="36" height="196" fill="#2E2820"></rect>
+            <rect x="754" y="0" width="37" height="196" fill="#2E2820"></rect>
+            <path d="M0 250 Q87 238 174.5 196" fill="none" stroke="#3A342E" stroke-width="3" stroke-dasharray="2 6"></path>
+            <path d="M790.7 196 Q866 238 928 250" fill="none" stroke="#3A342E" stroke-width="3" stroke-dasharray="2 6"></path>
+            <path d="M174.5 196 Q482.6 -100 790.7 196" fill="none" stroke="#C4A35A" stroke-width="3"></path>
+            <line x1="0" y1="196" x2="928" y2="196" stroke="#3A342E" stroke-width="1"></line>
+            <line x1="174.5" y1="188" x2="174.5" y2="204" stroke="#F3EFE6" stroke-width="2"></line>
+            <line x1="790.7" y1="188" x2="790.7" y2="204" stroke="#F3EFE6" stroke-width="2"></line>
+            <line x1="504.9" y1="62" x2="504.9" y2="196" stroke="#E0A050" stroke-width="1" stroke-dasharray="3 4"></line>
+            <circle cx="504.9" cy="48.8" r="14" fill="#D4A017"></circle>
+            <rect x="502.4" y="20" width="5" height="10" fill="#D4A017"></rect>
+            <rect x="502.4" y="68" width="5" height="10" fill="#D4A017"></rect>
+            <rect x="473" y="46.3" width="10" height="5" fill="#D4A017"></rect>
+            <rect x="527" y="46.3" width="10" height="5" fill="#D4A017"></rect>
+            <rect x="481" y="24" width="5" height="10" fill="#D4A017" transform="rotate(-45 483.5 29)"></rect>
+            <rect x="524" y="64" width="5" height="10" fill="#D4A017" transform="rotate(-45 526.5 69)"></rect>
+            <rect x="524" y="24" width="5" height="10" fill="#D4A017" transform="rotate(45 526.5 29)"></rect>
+            <rect x="481" y="64" width="5" height="10" fill="#D4A017" transform="rotate(45 483.5 69)"></rect>
+            <circle cx="872" cy="74" r="13" fill="#8FA3B5"></circle>
+            <circle cx="879" cy="69" r="11" fill="#100E0C"></circle>
+            <circle cx="66" cy="92" r="2" fill="#8FA3B5"></circle>
+            <circle cx="108" cy="58" r="2" fill="#8FA3B5"></circle>
+            <circle cx="43" cy="46" r="2" fill="#8FA3B5"></circle>
+            <circle cx="898" cy="128" r="2" fill="#8FA3B5"></circle>
+            <circle cx="845" cy="150" r="2" fill="#8FA3B5"></circle>
+            <text x="504.9" y="14" text-anchor="middle" font-family="Georgia, Times, serif" font-size="21" fill="#E0A050">14:20</text>
+            <text x="174.5" y="222" text-anchor="middle" font-family="Georgia, Times, serif" font-size="17" fill="#F3EFE6">07:34</text>
+            <text x="790.7" y="222" text-anchor="middle" font-family="Georgia, Times, serif" font-size="17" fill="#F3EFE6">20:11</text>
+            <text x="76" y="222" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#9A9388">noite</text>
+            <text x="870" y="222" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#9A9388">noite</text>
+            <text x="193" y="182" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#9A9388">gold</text>
+            <text x="772" y="182" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#9A9388">gold</text>
+            <text x="340" y="222" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#9A9388">10h</text>
+            <text x="482" y="222" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#9A9388">13h 52 · zénite</text>
+            <text x="628" y="222" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#9A9388">17h</text>
+            <text x="464" y="252" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#E0A050">54 % do dia decorrido · faltam 5 h 51 min de luz</text>
+          </svg>
+        </div>
+
+        <div style="flex:none;display:flex;margin-top:24px;border-top:1px solid #3A342E;padding-top:20px">
+          <div style="flex:1;display:flex;flex-direction:column;gap:5px">
+            <span style="font-size:14px;color:#9A9388">golden hour manhã</span>
+            <span style="font-family:Georgia,Times,serif;font-size:28px;line-height:1">07:34–08:19</span>
+          </div>
+          <div style="flex:1;display:flex;flex-direction:column;gap:5px;border-left:1px solid #3A342E;padding-left:24px">
+            <span style="font-size:14px;color:#9A9388">golden hour tarde</span>
+            <span style="font-family:Georgia,Times,serif;font-size:28px;line-height:1;color:#E0A050">19:26–20:11</span>
+          </div>
+          <div style="flex:1;display:flex;flex-direction:column;gap:5px;border-left:1px solid #3A342E;padding-left:24px">
+            <span style="font-size:14px;color:#9A9388">crepúsculo civil</span>
+            <span style="font-family:Georgia,Times,serif;font-size:28px;line-height:1">20:11–20:38</span>
+          </div>
+          <div style="flex:1;display:flex;flex-direction:column;gap:5px;border-left:1px solid #3A342E;padding-left:24px">
+            <span style="font-size:14px;color:#9A9388">lua · 42 % crescente</span>
+            <span style="font-family:Georgia,Times,serif;font-size:28px;line-height:1;color:#8FA3B5">nasce 13:58</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div id="2c" style="display:flex;flex-direction:column;gap:14px">
+    <div style="display:flex;align-items:center;gap:12px">
+      <span style="font-family:Georgia,Times,serif;font-size:13px;padding:3px 8px;border:1px solid #B8B1A6;color:#4A453E">2c</span>
+      <span style="font-size:16px;font-weight:bold">Dias do ano</span>
+      <span style="font-size:13px;color:#8A8478">/p/daysleft</span>
+    </div>
+    <div style="display:flex;gap:24px;flex-wrap:wrap">
+
+      <div data-theme="day" style="flex:none;width:1024px;height:768px;overflow:hidden;background:#F4F1EA;color:#1C1914;display:flex;flex-direction:column;padding:44px 48px 36px;box-sizing:border-box;box-shadow:0 1px 3px rgba(0,0,0,.14)">
+        <div style="flex:none;display:flex;align-items:baseline;justify-content:space-between">
+          <span style="font-size:13px;font-weight:bold;letter-spacing:3px;text-transform:uppercase;color:#7A7468">2026</span>
+          <span style="font-size:15px;color:#7A7468">70 % já passou · dia 256 de 365</span>
+        </div>
+
+        <div style="flex:none;display:flex;align-items:flex-end;gap:40px;margin-top:18px">
+          <div style="display:flex;align-items:flex-end;gap:18px">
+            <span style="font-family:Georgia,Times,serif;font-size:196px;line-height:.82;letter-spacing:-8px">109</span>
+            <span style="font-size:22px;color:#7A7468;padding-bottom:22px">dias até ao fim do ano</span>
+          </div>
+        </div>
+
+        <div style="flex:none;display:flex;height:4px;margin-top:30px">
+          <div style="width:70%;background:#1C1914"></div>
+          <div style="flex:1;background:#DDD6C8"></div>
+        </div>
+
+        <div style="flex:none;display:flex;gap:4px;align-items:flex-end;margin-top:34px">
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:8px"><div style="width:100%;height:46px;background:#1C1914"></div><span style="font-size:13px;color:#7A7468">J</span></div>
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:8px"><div style="width:100%;height:46px;background:#1C1914"></div><span style="font-size:13px;color:#7A7468">F</span></div>
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:8px"><div style="width:100%;height:46px;background:#1C1914"></div><span style="font-size:13px;color:#7A7468">M</span></div>
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:8px"><div style="width:100%;height:46px;background:#1C1914"></div><span style="font-size:13px;color:#7A7468">A</span></div>
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:8px"><div style="width:100%;height:46px;background:#1C1914"></div><span style="font-size:13px;color:#7A7468">M</span></div>
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:8px"><div style="width:100%;height:46px;background:#1C1914"></div><span style="font-size:13px;color:#7A7468">J</span></div>
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:8px"><div style="width:100%;height:46px;background:#1C1914"></div><span style="font-size:13px;color:#7A7468">J</span></div>
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:8px"><div style="width:100%;height:46px;background:#1C1914"></div><span style="font-size:13px;color:#7A7468">A</span></div>
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:8px"><div style="width:100%;height:62px;background:#DDD6C8;position:relative"><div style="position:absolute;left:0;right:0;bottom:0;height:43%;background:#B45309"></div></div><span style="font-size:13px;font-weight:bold;color:#B45309">S</span></div>
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:8px"><div style="width:100%;height:46px;background:#DDD6C8"></div><span style="font-size:13px;color:#7A7468">O</span></div>
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:8px"><div style="width:100%;height:46px;background:#DDD6C8"></div><span style="font-size:13px;color:#7A7468">N</span></div>
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:8px"><div style="width:100%;height:46px;background:#DDD6C8"></div><span style="font-size:13px;color:#7A7468">D</span></div>
+        </div>
+
+        <div style="flex:1;display:flex;gap:44px;margin-top:34px;min-height:0">
+          <div style="flex:1;display:flex;flex-direction:column">
+            <span style="font-size:15px;color:#7A7468">feriados PT que faltam</span>
+            <div style="display:flex;gap:16px;margin-top:16px">
+              <div style="width:8px;background:#8A4A3A"></div>
+              <div style="flex:1;display:flex;flex-direction:column;gap:16px">
+                <div style="display:flex;flex-direction:column"><span style="font-size:23px">Implantação da República</span><span style="font-size:15px;color:#7A7468">05/10 · segunda-feira</span></div>
+                <div style="display:flex;flex-direction:column"><span style="font-size:23px">Todos os Santos</span><span style="font-size:15px;color:#7A7468">01/11 · domingo</span></div>
+                <div style="display:flex;flex-direction:column"><span style="font-size:23px">Restauração da Independência</span><span style="font-size:15px;color:#7A7468">01/12 · terça-feira</span></div>
+              </div>
+            </div>
+          </div>
+          <div style="width:300px;flex:none;display:flex;flex-direction:column;gap:22px;border-left:1px solid #DDD6C8;padding-left:36px">
+            <div style="display:flex;flex-direction:column">
+              <span style="font-size:15px;color:#7A7468">semana ISO</span>
+              <span style="font-family:Georgia,Times,serif;font-size:46px;line-height:1.05">38 <span style="font-size:22px;color:#7A7468">de 53</span></span>
+            </div>
+            <div style="display:flex;flex-direction:column">
+              <span style="font-size:15px;color:#7A7468">trimestre</span>
+              <span style="font-family:Georgia,Times,serif;font-size:46px;line-height:1.05">Q3 <span style="font-size:22px;color:#7A7468">89 %</span></span>
+            </div>
+            <div style="display:flex;flex-direction:column">
+              <span style="font-size:15px;color:#7A7468">dias úteis restantes</span>
+              <span style="font-family:Georgia,Times,serif;font-size:46px;line-height:1.05;color:#3F6B4A">76</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div data-theme="night" style="flex:none;width:1024px;height:768px;overflow:hidden;background:#161412;color:#F3EFE6;display:flex;flex-direction:column;padding:44px 48px 36px;box-sizing:border-box;box-shadow:0 1px 3px rgba(0,0,0,.35)">
+        <div style="flex:none;display:flex;align-items:baseline;justify-content:space-between">
+          <span style="font-size:13px;font-weight:bold;letter-spacing:3px;text-transform:uppercase;color:#9A9388">2026</span>
+          <span style="font-size:15px;color:#9A9388">70 % já passou · dia 256 de 365</span>
+        </div>
+
+        <div style="flex:none;display:flex;align-items:flex-end;gap:40px;margin-top:18px">
+          <div style="display:flex;align-items:flex-end;gap:18px">
+            <span style="font-family:Georgia,Times,serif;font-size:196px;line-height:.82;letter-spacing:-8px">109</span>
+            <span style="font-size:22px;color:#9A9388;padding-bottom:22px">dias até ao fim do ano</span>
+          </div>
+        </div>
+
+        <div style="flex:none;display:flex;height:4px;margin-top:30px">
+          <div style="width:70%;background:#F3EFE6"></div>
+          <div style="flex:1;background:#3A342E"></div>
+        </div>
+
+        <div style="flex:none;display:flex;gap:4px;align-items:flex-end;margin-top:34px">
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:8px"><div style="width:100%;height:46px;background:#F3EFE6"></div><span style="font-size:13px;color:#9A9388">J</span></div>
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:8px"><div style="width:100%;height:46px;background:#F3EFE6"></div><span style="font-size:13px;color:#9A9388">F</span></div>
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:8px"><div style="width:100%;height:46px;background:#F3EFE6"></div><span style="font-size:13px;color:#9A9388">M</span></div>
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:8px"><div style="width:100%;height:46px;background:#F3EFE6"></div><span style="font-size:13px;color:#9A9388">A</span></div>
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:8px"><div style="width:100%;height:46px;background:#F3EFE6"></div><span style="font-size:13px;color:#9A9388">M</span></div>
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:8px"><div style="width:100%;height:46px;background:#F3EFE6"></div><span style="font-size:13px;color:#9A9388">J</span></div>
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:8px"><div style="width:100%;height:46px;background:#F3EFE6"></div><span style="font-size:13px;color:#9A9388">J</span></div>
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:8px"><div style="width:100%;height:46px;background:#F3EFE6"></div><span style="font-size:13px;color:#9A9388">A</span></div>
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:8px"><div style="width:100%;height:62px;background:#3A342E;position:relative"><div style="position:absolute;left:0;right:0;bottom:0;height:43%;background:#E0A050"></div></div><span style="font-size:13px;font-weight:bold;color:#E0A050">S</span></div>
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:8px"><div style="width:100%;height:46px;background:#3A342E"></div><span style="font-size:13px;color:#9A9388">O</span></div>
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:8px"><div style="width:100%;height:46px;background:#3A342E"></div><span style="font-size:13px;color:#9A9388">N</span></div>
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:8px"><div style="width:100%;height:46px;background:#3A342E"></div><span style="font-size:13px;color:#9A9388">D</span></div>
+        </div>
+
+        <div style="flex:1;display:flex;gap:44px;margin-top:34px;min-height:0">
+          <div style="flex:1;display:flex;flex-direction:column">
+            <span style="font-size:15px;color:#9A9388">feriados PT que faltam</span>
+            <div style="display:flex;gap:16px;margin-top:16px">
+              <div style="width:8px;background:#B5745E"></div>
+              <div style="flex:1;display:flex;flex-direction:column;gap:16px">
+                <div style="display:flex;flex-direction:column"><span style="font-size:23px">Implantação da República</span><span style="font-size:15px;color:#9A9388">05/10 · segunda-feira</span></div>
+                <div style="display:flex;flex-direction:column"><span style="font-size:23px">Todos os Santos</span><span style="font-size:15px;color:#9A9388">01/11 · domingo</span></div>
+                <div style="display:flex;flex-direction:column"><span style="font-size:23px">Restauração da Independência</span><span style="font-size:15px;color:#9A9388">01/12 · terça-feira</span></div>
+              </div>
+            </div>
+          </div>
+          <div style="width:300px;flex:none;display:flex;flex-direction:column;gap:22px;border-left:1px solid #3A342E;padding-left:36px">
+            <div style="display:flex;flex-direction:column">
+              <span style="font-size:15px;color:#9A9388">semana ISO</span>
+              <span style="font-family:Georgia,Times,serif;font-size:46px;line-height:1.05">38 <span style="font-size:22px;color:#9A9388">de 53</span></span>
+            </div>
+            <div style="display:flex;flex-direction:column">
+              <span style="font-size:15px;color:#9A9388">trimestre</span>
+              <span style="font-family:Georgia,Times,serif;font-size:46px;line-height:1.05">Q3 <span style="font-size:22px;color:#9A9388">89 %</span></span>
+            </div>
+            <div style="display:flex;flex-direction:column">
+              <span style="font-size:15px;color:#9A9388">dias úteis restantes</span>
+              <span style="font-family:Georgia,Times,serif;font-size:46px;line-height:1.05;color:#9FBFA4">76</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div id="2d" style="display:flex;flex-direction:column;gap:14px">
+    <div style="display:flex;align-items:center;gap:12px">
+      <span style="font-family:Georgia,Times,serif;font-size:13px;padding:3px 8px;border:1px solid #B8B1A6;color:#4A453E">2d</span>
+      <span style="font-size:16px;font-weight:bold">Hoje — agenda e blocos de foco</span>
+      <span style="font-size:13px;color:#8A8478">/p/calendar</span>
+    </div>
+    <div style="display:flex;gap:24px;flex-wrap:wrap">
+
+      <div data-theme="day" style="flex:none;width:1024px;height:768px;overflow:hidden;background:#F4F1EA;color:#1C1914;display:flex;flex-direction:column;padding:44px 48px 36px;box-sizing:border-box;box-shadow:0 1px 3px rgba(0,0,0,.14)">
+        <div style="flex:none;display:flex;align-items:baseline;justify-content:space-between">
+          <span style="font-size:13px;font-weight:bold;letter-spacing:3px;text-transform:uppercase;color:#7A7468">Hoje</span>
+          <span style="font-size:15px;color:#7A7468">domingo, 13 de setembro · 10:35 · 6 eventos</span>
+        </div>
+
+        <div style="flex:1;display:flex;gap:30px;margin-top:26px;min-height:0">
+          <div style="width:56px;flex:none;display:flex;gap:10px">
+            <div style="width:12px;display:flex;flex-direction:column">
+              <div style="height:75px;background:#EAE5DA"></div>
+              <div style="height:37px;background:#5B6B7A"></div>
+              <div style="height:37px;background:#EAE5DA"></div>
+              <div style="height:56px;background:#3F6B4A"></div>
+              <div style="height:19px;background:#EAE5DA"></div>
+              <div style="height:37px;background:#B8B1A6"></div>
+              <div style="height:19px;background:#EAE5DA"></div>
+              <div style="height:75px;background:#B45309"></div>
+              <div style="height:19px;background:#EAE5DA"></div>
+              <div style="height:28px;background:#5B6B7A"></div>
+              <div style="height:47px;background:#EAE5DA"></div>
+              <div style="height:56px;background:#3F6B4A"></div>
+              <div style="flex:1;background:#EAE5DA"></div>
+            </div>
+            <div style="flex:1;display:flex;flex-direction:column;justify-content:space-between;padding-bottom:2px">
+              <span style="font-size:13px;color:#7A7468">07</span>
+              <span style="font-size:13px;color:#7A7468">11</span>
+              <span style="font-size:13px;color:#7A7468">15</span>
+              <span style="font-size:13px;color:#7A7468">19</span>
+              <span style="font-size:13px;color:#7A7468">22</span>
+            </div>
+          </div>
+
+          <div style="flex:1;display:flex;flex-direction:column;justify-content:space-between;min-width:0;padding-right:10px">
+            <div style="display:flex;gap:16px">
+              <div style="width:8px;background:#5B6B7A"></div>
+              <div style="flex:1;display:flex;align-items:baseline;justify-content:space-between;gap:16px">
+                <div style="display:flex;flex-direction:column;min-width:0">
+                  <span style="font-size:24px;line-height:1.25">Zoho CRM · Alfaseguros</span>
+                  <span style="font-size:15px;color:#7A7468">videochamada · Miguel + Rita</span>
+                </div>
+                <span style="font-family:Georgia,Times,serif;font-size:22px;flex:none">09:00</span>
+              </div>
+            </div>
+            <div style="display:flex;gap:16px">
+              <div style="width:8px;background:#3F6B4A"></div>
+              <div style="flex:1;display:flex;align-items:baseline;justify-content:space-between;gap:16px">
+                <div style="display:flex;flex-direction:column;min-width:0">
+                  <span style="font-size:24px;line-height:1.25;color:#3F6B4A">Foco · n8n Ringover → Desk</span>
+                  <span style="font-size:15px;color:#7A7468">TRNSF-412 · dedup de tickets · 90 min</span>
+                </div>
+                <span style="font-family:Georgia,Times,serif;font-size:22px;flex:none">11:00</span>
+              </div>
+            </div>
+            <div style="display:flex;gap:16px">
+              <div style="width:8px;background:#B8B1A6"></div>
+              <div style="flex:1;display:flex;align-items:baseline;justify-content:space-between;gap:16px">
+                <div style="display:flex;flex-direction:column;min-width:0">
+                  <span style="font-size:24px;line-height:1.25;color:#7A7468">Almoço</span>
+                  <span style="font-size:15px;color:#7A7468">casa</span>
+                </div>
+                <span style="font-family:Georgia,Times,serif;font-size:22px;flex:none;color:#7A7468">13:00</span>
+              </div>
+            </div>
+            <div style="display:flex;gap:16px">
+              <div style="width:8px;background:#B45309"></div>
+              <div style="flex:1;display:flex;align-items:baseline;justify-content:space-between;gap:16px">
+                <div style="display:flex;flex-direction:column;min-width:0">
+                  <span style="font-size:24px;line-height:1.25;color:#B45309">NetJets · Lisboa → Genebra</span>
+                  <span style="font-size:15px;color:#7A7468">LIS T2 · check-in 13:45</span>
+                </div>
+                <span style="font-family:Georgia,Times,serif;font-size:22px;flex:none">14:30</span>
+              </div>
+            </div>
+            <div style="display:flex;gap:16px">
+              <div style="width:8px;background:#5B6B7A"></div>
+              <div style="flex:1;display:flex;align-items:baseline;justify-content:space-between;gap:16px">
+                <div style="display:flex;flex-direction:column;min-width:0">
+                  <span style="font-size:24px;line-height:1.25">Sprint review · TRNSF</span>
+                  <span style="font-size:15px;color:#7A7468">45 min</span>
+                </div>
+                <span style="font-family:Georgia,Times,serif;font-size:22px;flex:none">17:00</span>
+              </div>
+            </div>
+            <div style="display:flex;gap:16px">
+              <div style="width:8px;background:#3F6B4A"></div>
+              <div style="flex:1;display:flex;align-items:baseline;justify-content:space-between;gap:16px">
+                <div style="display:flex;flex-direction:column;min-width:0">
+                  <span style="font-size:24px;line-height:1.25;color:#3F6B4A">Foco · proposta Zoho People</span>
+                  <span style="font-size:15px;color:#7A7468">entrega segunda-feira · 90 min</span>
+                </div>
+                <span style="font-family:Georgia,Times,serif;font-size:22px;flex:none">19:00</span>
+              </div>
+            </div>
+          </div>
+
+          <div style="width:286px;flex:none;display:flex;flex-direction:column;border-left:1px solid #DDD6C8;padding-left:34px">
+            <span style="font-size:15px;color:#7A7468">a seguir · daqui a 25 min</span>
+            <span style="font-size:28px;line-height:1.2;margin-top:8px;color:#3F6B4A">Foco · n8n Ringover</span>
+            <span style="font-family:Georgia,Times,serif;font-size:30px;margin-top:8px">11:00 → 12:30</span>
+
+            <div style="height:1px;background:#DDD6C8;margin:26px 0"></div>
+
+            <span style="font-size:15px;color:#7A7468">carga do dia</span>
+            <div style="display:flex;flex-direction:column;gap:12px;margin-top:14px">
+              <div style="display:flex;align-items:baseline;justify-content:space-between"><span style="font-size:17px">foco</span><span style="font-family:Georgia,Times,serif;font-size:24px">3 h 00</span></div>
+              <div style="display:flex;align-items:baseline;justify-content:space-between"><span style="font-size:17px">reuniões</span><span style="font-family:Georgia,Times,serif;font-size:24px">1 h 45</span></div>
+              <div style="display:flex;align-items:baseline;justify-content:space-between"><span style="font-size:17px">deslocação</span><span style="font-family:Georgia,Times,serif;font-size:24px">2 h 00</span></div>
+            </div>
+            <div style="display:flex;height:6px;margin-top:16px">
+              <div style="width:44%;background:#3F6B4A"></div>
+              <div style="width:26%;background:#5B6B7A"></div>
+              <div style="width:30%;background:#B45309"></div>
+            </div>
+
+            <div style="height:1px;background:#DDD6C8;margin:26px 0"></div>
+
+            <span style="font-size:15px;color:#7A7468">amanhã</span>
+            <div style="display:flex;flex-direction:column;gap:11px;margin-top:14px">
+              <div style="display:flex;gap:12px;align-items:baseline"><span style="font-family:Georgia,Times,serif;font-size:17px;color:#7A7468;width:46px">09:30</span><span style="font-size:17px">Kickoff Zoho People</span></div>
+              <div style="display:flex;gap:12px;align-items:baseline"><span style="font-family:Georgia,Times,serif;font-size:17px;color:#7A7468;width:46px">14:00</span><span style="font-size:17px">Fecho de faturação</span></div>
+              <div style="display:flex;gap:12px;align-items:baseline"><span style="font-family:Georgia,Times,serif;font-size:17px;color:#7A7468;width:46px">16:30</span><span style="font-size:17px">Alfaseguros · IVR fase 2</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div data-theme="night" style="flex:none;width:1024px;height:768px;overflow:hidden;background:#161412;color:#F3EFE6;display:flex;flex-direction:column;padding:44px 48px 36px;box-sizing:border-box;box-shadow:0 1px 3px rgba(0,0,0,.35)">
+        <div style="flex:none;display:flex;align-items:baseline;justify-content:space-between">
+          <span style="font-size:13px;font-weight:bold;letter-spacing:3px;text-transform:uppercase;color:#9A9388">Hoje</span>
+          <span style="font-size:15px;color:#9A9388">domingo, 13 de setembro · 10:35 · 6 eventos</span>
+        </div>
+
+        <div style="flex:1;display:flex;gap:30px;margin-top:26px;min-height:0">
+          <div style="width:56px;flex:none;display:flex;gap:10px">
+            <div style="width:12px;display:flex;flex-direction:column">
+              <div style="height:75px;background:#221F1B"></div>
+              <div style="height:37px;background:#8FA3B5"></div>
+              <div style="height:37px;background:#221F1B"></div>
+              <div style="height:56px;background:#9FBFA4"></div>
+              <div style="height:19px;background:#221F1B"></div>
+              <div style="height:37px;background:#4A443C"></div>
+              <div style="height:19px;background:#221F1B"></div>
+              <div style="height:75px;background:#E0A050"></div>
+              <div style="height:19px;background:#221F1B"></div>
+              <div style="height:28px;background:#8FA3B5"></div>
+              <div style="height:47px;background:#221F1B"></div>
+              <div style="height:56px;background:#9FBFA4"></div>
+              <div style="flex:1;background:#221F1B"></div>
+            </div>
+            <div style="flex:1;display:flex;flex-direction:column;justify-content:space-between;padding-bottom:2px">
+              <span style="font-size:13px;color:#9A9388">07</span>
+              <span style="font-size:13px;color:#9A9388">11</span>
+              <span style="font-size:13px;color:#9A9388">15</span>
+              <span style="font-size:13px;color:#9A9388">19</span>
+              <span style="font-size:13px;color:#9A9388">22</span>
+            </div>
+          </div>
+
+          <div style="flex:1;display:flex;flex-direction:column;justify-content:space-between;min-width:0;padding-right:10px">
+            <div style="display:flex;gap:16px">
+              <div style="width:8px;background:#8FA3B5"></div>
+              <div style="flex:1;display:flex;align-items:baseline;justify-content:space-between;gap:16px">
+                <div style="display:flex;flex-direction:column;min-width:0">
+                  <span style="font-size:24px;line-height:1.25">Zoho CRM · Alfaseguros</span>
+                  <span style="font-size:15px;color:#9A9388">videochamada · Miguel + Rita</span>
+                </div>
+                <span style="font-family:Georgia,Times,serif;font-size:22px;flex:none">09:00</span>
+              </div>
+            </div>
+            <div style="display:flex;gap:16px">
+              <div style="width:8px;background:#9FBFA4"></div>
+              <div style="flex:1;display:flex;align-items:baseline;justify-content:space-between;gap:16px">
+                <div style="display:flex;flex-direction:column;min-width:0">
+                  <span style="font-size:24px;line-height:1.25;color:#9FBFA4">Foco · n8n Ringover → Desk</span>
+                  <span style="font-size:15px;color:#9A9388">TRNSF-412 · dedup de tickets · 90 min</span>
+                </div>
+                <span style="font-family:Georgia,Times,serif;font-size:22px;flex:none">11:00</span>
+              </div>
+            </div>
+            <div style="display:flex;gap:16px">
+              <div style="width:8px;background:#4A443C"></div>
+              <div style="flex:1;display:flex;align-items:baseline;justify-content:space-between;gap:16px">
+                <div style="display:flex;flex-direction:column;min-width:0">
+                  <span style="font-size:24px;line-height:1.25;color:#9A9388">Almoço</span>
+                  <span style="font-size:15px;color:#9A9388">casa</span>
+                </div>
+                <span style="font-family:Georgia,Times,serif;font-size:22px;flex:none;color:#9A9388">13:00</span>
+              </div>
+            </div>
+            <div style="display:flex;gap:16px">
+              <div style="width:8px;background:#E0A050"></div>
+              <div style="flex:1;display:flex;align-items:baseline;justify-content:space-between;gap:16px">
+                <div style="display:flex;flex-direction:column;min-width:0">
+                  <span style="font-size:24px;line-height:1.25;color:#E0A050">NetJets · Lisboa → Genebra</span>
+                  <span style="font-size:15px;color:#9A9388">LIS T2 · check-in 13:45</span>
+                </div>
+                <span style="font-family:Georgia,Times,serif;font-size:22px;flex:none">14:30</span>
+              </div>
+            </div>
+            <div style="display:flex;gap:16px">
+              <div style="width:8px;background:#8FA3B5"></div>
+              <div style="flex:1;display:flex;align-items:baseline;justify-content:space-between;gap:16px">
+                <div style="display:flex;flex-direction:column;min-width:0">
+                  <span style="font-size:24px;line-height:1.25">Sprint review · TRNSF</span>
+                  <span style="font-size:15px;color:#9A9388">45 min</span>
+                </div>
+                <span style="font-family:Georgia,Times,serif;font-size:22px;flex:none">17:00</span>
+              </div>
+            </div>
+            <div style="display:flex;gap:16px">
+              <div style="width:8px;background:#9FBFA4"></div>
+              <div style="flex:1;display:flex;align-items:baseline;justify-content:space-between;gap:16px">
+                <div style="display:flex;flex-direction:column;min-width:0">
+                  <span style="font-size:24px;line-height:1.25;color:#9FBFA4">Foco · proposta Zoho People</span>
+                  <span style="font-size:15px;color:#9A9388">entrega segunda-feira · 90 min</span>
+                </div>
+                <span style="font-family:Georgia,Times,serif;font-size:22px;flex:none">19:00</span>
+              </div>
+            </div>
+          </div>
+
+          <div style="width:286px;flex:none;display:flex;flex-direction:column;border-left:1px solid #3A342E;padding-left:34px">
+            <span style="font-size:15px;color:#9A9388">a seguir · daqui a 25 min</span>
+            <span style="font-size:28px;line-height:1.2;margin-top:8px;color:#9FBFA4">Foco · n8n Ringover</span>
+            <span style="font-family:Georgia,Times,serif;font-size:30px;margin-top:8px">11:00 → 12:30</span>
+
+            <div style="height:1px;background:#3A342E;margin:26px 0"></div>
+
+            <span style="font-size:15px;color:#9A9388">carga do dia</span>
+            <div style="display:flex;flex-direction:column;gap:12px;margin-top:14px">
+              <div style="display:flex;align-items:baseline;justify-content:space-between"><span style="font-size:17px">foco</span><span style="font-family:Georgia,Times,serif;font-size:24px">3 h 00</span></div>
+              <div style="display:flex;align-items:baseline;justify-content:space-between"><span style="font-size:17px">reuniões</span><span style="font-family:Georgia,Times,serif;font-size:24px">1 h 45</span></div>
+              <div style="display:flex;align-items:baseline;justify-content:space-between"><span style="font-size:17px">deslocação</span><span style="font-family:Georgia,Times,serif;font-size:24px">2 h 00</span></div>
+            </div>
+            <div style="display:flex;height:6px;margin-top:16px">
+              <div style="width:44%;background:#9FBFA4"></div>
+              <div style="width:26%;background:#8FA3B5"></div>
+              <div style="width:30%;background:#E0A050"></div>
+            </div>
+
+            <div style="height:1px;background:#3A342E;margin:26px 0"></div>
+
+            <span style="font-size:15px;color:#9A9388">amanhã</span>
+            <div style="display:flex;flex-direction:column;gap:11px;margin-top:14px">
+              <div style="display:flex;gap:12px;align-items:baseline"><span style="font-family:Georgia,Times,serif;font-size:17px;color:#9A9388;width:46px">09:30</span><span style="font-size:17px">Kickoff Zoho People</span></div>
+              <div style="display:flex;gap:12px;align-items:baseline"><span style="font-family:Georgia,Times,serif;font-size:17px;color:#9A9388;width:46px">14:00</span><span style="font-size:17px">Fecho de faturação</span></div>
+              <div style="display:flex;gap:12px;align-items:baseline"><span style="font-family:Georgia,Times,serif;font-size:17px;color:#9A9388;width:46px">16:30</span><span style="font-size:17px">Alfaseguros · IVR fase 2</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div id="2e" style="display:flex;flex-direction:column;gap:14px">
+    <div style="display:flex;align-items:center;gap:12px">
+      <span style="font-family:Georgia,Times,serif;font-size:13px;padding:3px 8px;border:1px solid #B8B1A6;color:#4A453E">2e</span>
+      <span style="font-size:16px;font-weight:bold">Contas a receber</span>
+      <span style="font-size:13px;color:#8A8478">/p/ar · Zoho Books</span>
+    </div>
+    <div style="display:flex;gap:24px;flex-wrap:wrap">
+
+      <div data-theme="day" style="flex:none;width:1024px;height:768px;overflow:hidden;background:#F4F1EA;color:#1C1914;display:flex;flex-direction:column;padding:44px 48px 36px;box-sizing:border-box;box-shadow:0 1px 3px rgba(0,0,0,.14)">
+        <div style="flex:none;display:flex;align-items:baseline;justify-content:space-between">
+          <span style="font-size:13px;font-weight:bold;letter-spacing:3px;text-transform:uppercase;color:#7A7468">Contas a receber</span>
+          <span style="font-size:15px;color:#7A7468">Zoho Books · 11 faturas abertas</span>
+        </div>
+
+        <div style="flex:none;display:flex;align-items:flex-end;justify-content:space-between;margin-top:20px">
+          <div style="display:flex;align-items:flex-end;gap:16px">
+            <span style="font-family:Georgia,Times,serif;font-size:132px;line-height:.9;letter-spacing:-5px">48 250</span>
+            <span style="font-family:Georgia,Times,serif;font-size:52px;color:#7A7468;padding-bottom:10px">€</span>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px;padding-bottom:8px">
+            <span style="font-size:15px;color:#7A7468">em atraso</span>
+            <span style="font-family:Georgia,Times,serif;font-size:52px;line-height:1;color:#B42318">19 850 €</span>
+            <span style="font-size:15px;color:#7A7468">41 % do total · 6 faturas</span>
+          </div>
+        </div>
+
+        <div style="flex:none;margin-top:30px">
+          <span style="font-size:15px;color:#7A7468">antiguidade</span>
+          <div style="display:flex;align-items:flex-end;gap:3px;height:120px;margin-top:12px">
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:8px">
+              <span style="font-family:Georgia,Times,serif;font-size:24px">28 400</span>
+              <div style="width:100%;height:82px;background:#3F6B4A"></div>
+              <span style="font-size:14px;color:#7A7468">a vencer · 5</span>
+            </div>
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:8px">
+              <span style="font-family:Georgia,Times,serif;font-size:24px">11 900</span>
+              <div style="width:100%;height:42px;background:#B45309"></div>
+              <span style="font-size:14px;color:#7A7468">1–30 d · 3</span>
+            </div>
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:8px">
+              <span style="font-family:Georgia,Times,serif;font-size:24px">5 200</span>
+              <div style="width:100%;height:22px;background:#8A4A3A"></div>
+              <span style="font-size:14px;color:#7A7468">31–60 d · 2</span>
+            </div>
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:8px">
+              <span style="font-family:Georgia,Times,serif;font-size:24px;color:#B42318">2 750</span>
+              <div style="width:100%;height:14px;background:#B42318"></div>
+              <span style="font-size:14px;color:#B42318">+60 d · 1</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="flex:1;display:flex;flex-direction:column;justify-content:center;gap:18px;margin-top:26px;min-height:0">
+          <span style="font-size:15px;color:#7A7468">por cliente</span>
+          <div style="display:flex;align-items:center;gap:18px">
+            <span style="width:210px;font-size:20px">Alfaseguros</span>
+            <div style="flex:1;display:flex;height:18px;background:#EAE5DA"><div style="width:62%;background:#3F6B4A"></div><div style="width:38%;background:#B45309"></div></div>
+            <span style="width:104px;text-align:right;font-family:Georgia,Times,serif;font-size:22px">18 450</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:18px">
+            <span style="width:210px;font-size:20px">Cliente L · Zoho People</span>
+            <div style="flex:1;display:flex;height:18px;background:#EAE5DA"><div style="width:55%;background:#3F6B4A"></div><div style="width:45%;background:#B45309"></div></div>
+            <span style="width:104px;text-align:right;font-family:Georgia,Times,serif;font-size:22px">12 300</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:18px">
+            <span style="width:210px;font-size:20px">NetJets</span>
+            <div style="flex:1;display:flex;height:18px;background:#EAE5DA"><div style="width:100%;background:#3F6B4A"></div></div>
+            <span style="width:104px;text-align:right;font-family:Georgia,Times,serif;font-size:22px">8 900</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:18px">
+            <span style="width:210px;font-size:20px">Grupo M</span>
+            <div style="flex:1;display:flex;height:18px;background:#EAE5DA"><div style="width:12%;background:#8A4A3A"></div><div style="width:88%;background:#B42318"></div></div>
+            <span style="width:104px;text-align:right;font-family:Georgia,Times,serif;font-size:22px;color:#B42318">5 850</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:18px">
+            <span style="width:210px;font-size:20px;color:#7A7468">outros · 4 clientes</span>
+            <div style="flex:1;display:flex;height:18px;background:#EAE5DA"><div style="width:70%;background:#3F6B4A"></div><div style="width:30%;background:#B45309"></div></div>
+            <span style="width:104px;text-align:right;font-family:Georgia,Times,serif;font-size:22px">2 750</span>
+          </div>
+        </div>
+
+        <div style="flex:none;display:flex;align-items:center;justify-content:space-between;border-top:1px solid #DDD6C8;padding-top:20px;margin-top:22px">
+          <div style="display:flex;flex-direction:column;gap:4px">
+            <span style="font-size:15px;color:#7A7468">ainda a faturar em setembro</span>
+            <span style="font-size:17px">Licenças Zoho 4 900 · Retainer Alfaseguros 5 000 · Horas Cliente L 2 500</span>
+          </div>
+          <span style="font-family:Georgia,Times,serif;font-size:46px;line-height:1;color:#3F6B4A">12 400 €</span>
+        </div>
+      </div>
+
+      <div data-theme="night" style="flex:none;width:1024px;height:768px;overflow:hidden;background:#161412;color:#F3EFE6;display:flex;flex-direction:column;padding:44px 48px 36px;box-sizing:border-box;box-shadow:0 1px 3px rgba(0,0,0,.35)">
+        <div style="flex:none;display:flex;align-items:baseline;justify-content:space-between">
+          <span style="font-size:13px;font-weight:bold;letter-spacing:3px;text-transform:uppercase;color:#9A9388">Contas a receber</span>
+          <span style="font-size:15px;color:#9A9388">Zoho Books · 11 faturas abertas</span>
+        </div>
+
+        <div style="flex:none;display:flex;align-items:flex-end;justify-content:space-between;margin-top:20px">
+          <div style="display:flex;align-items:flex-end;gap:16px">
+            <span style="font-family:Georgia,Times,serif;font-size:132px;line-height:.9;letter-spacing:-5px">48 250</span>
+            <span style="font-family:Georgia,Times,serif;font-size:52px;color:#9A9388;padding-bottom:10px">€</span>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px;padding-bottom:8px">
+            <span style="font-size:15px;color:#9A9388">em atraso</span>
+            <span style="font-family:Georgia,Times,serif;font-size:52px;line-height:1;color:#F0A8A0">19 850 €</span>
+            <span style="font-size:15px;color:#9A9388">41 % do total · 6 faturas</span>
+          </div>
+        </div>
+
+        <div style="flex:none;margin-top:30px">
+          <span style="font-size:15px;color:#9A9388">antiguidade</span>
+          <div style="display:flex;align-items:flex-end;gap:3px;height:120px;margin-top:12px">
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:8px">
+              <span style="font-family:Georgia,Times,serif;font-size:24px">28 400</span>
+              <div style="width:100%;height:82px;background:#9FBFA4"></div>
+              <span style="font-size:14px;color:#9A9388">a vencer · 5</span>
+            </div>
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:8px">
+              <span style="font-family:Georgia,Times,serif;font-size:24px">11 900</span>
+              <div style="width:100%;height:42px;background:#E0A050"></div>
+              <span style="font-size:14px;color:#9A9388">1–30 d · 3</span>
+            </div>
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:8px">
+              <span style="font-family:Georgia,Times,serif;font-size:24px">5 200</span>
+              <div style="width:100%;height:22px;background:#B5745E"></div>
+              <span style="font-size:14px;color:#9A9388">31–60 d · 2</span>
+            </div>
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:8px">
+              <span style="font-family:Georgia,Times,serif;font-size:24px;color:#F0A8A0">2 750</span>
+              <div style="width:100%;height:14px;background:#F0A8A0"></div>
+              <span style="font-size:14px;color:#F0A8A0">+60 d · 1</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="flex:1;display:flex;flex-direction:column;justify-content:center;gap:18px;margin-top:26px;min-height:0">
+          <span style="font-size:15px;color:#9A9388">por cliente</span>
+          <div style="display:flex;align-items:center;gap:18px">
+            <span style="width:210px;font-size:20px">Alfaseguros</span>
+            <div style="flex:1;display:flex;height:18px;background:#221F1B"><div style="width:62%;background:#9FBFA4"></div><div style="width:38%;background:#E0A050"></div></div>
+            <span style="width:104px;text-align:right;font-family:Georgia,Times,serif;font-size:22px">18 450</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:18px">
+            <span style="width:210px;font-size:20px">Cliente L · Zoho People</span>
+            <div style="flex:1;display:flex;height:18px;background:#221F1B"><div style="width:55%;background:#9FBFA4"></div><div style="width:45%;background:#E0A050"></div></div>
+            <span style="width:104px;text-align:right;font-family:Georgia,Times,serif;font-size:22px">12 300</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:18px">
+            <span style="width:210px;font-size:20px">NetJets</span>
+            <div style="flex:1;display:flex;height:18px;background:#221F1B"><div style="width:100%;background:#9FBFA4"></div></div>
+            <span style="width:104px;text-align:right;font-family:Georgia,Times,serif;font-size:22px">8 900</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:18px">
+            <span style="width:210px;font-size:20px">Grupo M</span>
+            <div style="flex:1;display:flex;height:18px;background:#221F1B"><div style="width:12%;background:#B5745E"></div><div style="width:88%;background:#F0A8A0"></div></div>
+            <span style="width:104px;text-align:right;font-family:Georgia,Times,serif;font-size:22px;color:#F0A8A0">5 850</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:18px">
+            <span style="width:210px;font-size:20px;color:#9A9388">outros · 4 clientes</span>
+            <div style="flex:1;display:flex;height:18px;background:#221F1B"><div style="width:70%;background:#9FBFA4"></div><div style="width:30%;background:#E0A050"></div></div>
+            <span style="width:104px;text-align:right;font-family:Georgia,Times,serif;font-size:22px">2 750</span>
+          </div>
+        </div>
+
+        <div style="flex:none;display:flex;align-items:center;justify-content:space-between;border-top:1px solid #3A342E;padding-top:20px;margin-top:22px">
+          <div style="display:flex;flex-direction:column;gap:4px">
+            <span style="font-size:15px;color:#9A9388">ainda a faturar em setembro</span>
+            <span style="font-size:17px">Licenças Zoho 4 900 · Retainer Alfaseguros 5 000 · Horas Cliente L 2 500</span>
+          </div>
+          <span style="font-family:Georgia,Times,serif;font-size:46px;line-height:1;color:#9FBFA4">12 400 €</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div id="2f" style="display:flex;flex-direction:column;gap:14px">
+    <div style="display:flex;align-items:center;gap:12px">
+      <span style="font-family:Georgia,Times,serif;font-size:13px;padding:3px 8px;border:1px solid #B8B1A6;color:#4A453E">2f</span>
+      <span style="font-size:16px;font-weight:bold">Gasto OpenRouter</span>
+      <span style="font-size:13px;color:#8A8478">/p/openrouter</span>
+    </div>
+    <div style="display:flex;gap:24px;flex-wrap:wrap">
+
+      <div data-theme="day" style="flex:none;width:1024px;height:768px;overflow:hidden;background:#F4F1EA;color:#1C1914;display:flex;flex-direction:column;padding:44px 48px 36px;box-sizing:border-box;box-shadow:0 1px 3px rgba(0,0,0,.14)">
+        <div style="flex:none;display:flex;align-items:baseline;justify-content:space-between">
+          <span style="font-size:13px;font-weight:bold;letter-spacing:3px;text-transform:uppercase;color:#7A7468">OpenRouter · setembro</span>
+          <span style="font-size:15px;color:#7A7468">13 dias decorridos · saldo 187,60 €</span>
+        </div>
+
+        <div style="flex:none;display:flex;align-items:flex-end;justify-content:space-between;margin-top:20px">
+          <div style="display:flex;align-items:flex-end;gap:16px">
+            <span style="font-family:Georgia,Times,serif;font-size:132px;line-height:.9;letter-spacing:-5px">312,40</span>
+            <span style="font-family:Georgia,Times,serif;font-size:52px;color:#7A7468;padding-bottom:10px">€</span>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px;padding-bottom:8px">
+            <span style="font-size:15px;color:#7A7468">vs agosto</span>
+            <span style="font-family:Georgia,Times,serif;font-size:52px;line-height:1;color:#3F6B4A">−8 %</span>
+            <span style="font-size:15px;color:#7A7468">projeção do mês 721 €</span>
+          </div>
+        </div>
+
+        <div style="flex:1;display:flex;flex-direction:column;justify-content:center;gap:18px;margin-top:26px;min-height:0">
+          <span style="font-size:15px;color:#7A7468">por workspace de cliente</span>
+          <div style="display:flex;align-items:center;gap:18px">
+            <span style="width:228px;font-size:20px">Alfaseguros</span>
+            <div style="flex:1;height:20px;background:#EAE5DA"><div style="width:100%;height:20px;background:#5B6B7A"></div></div>
+            <span style="width:96px;text-align:right;font-family:Georgia,Times,serif;font-size:22px">118,60</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:18px">
+            <span style="width:228px;font-size:20px">Interno · Transformatiive</span>
+            <div style="flex:1;height:20px;background:#EAE5DA"><div style="width:63%;height:20px;background:#5B6B7A"></div></div>
+            <span style="width:96px;text-align:right;font-family:Georgia,Times,serif;font-size:22px">74,20</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:18px">
+            <span style="width:228px;font-size:20px">Cliente L · Zoho People</span>
+            <div style="flex:1;height:20px;background:#EAE5DA"><div style="width:45%;height:20px;background:#5B6B7A"></div></div>
+            <span style="width:96px;text-align:right;font-family:Georgia,Times,serif;font-size:22px">52,90</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:18px">
+            <span style="width:228px;font-size:20px">NetJets</span>
+            <div style="flex:1;height:20px;background:#EAE5DA"><div style="width:26%;height:20px;background:#5B6B7A"></div></div>
+            <span style="width:96px;text-align:right;font-family:Georgia,Times,serif;font-size:22px">31,40</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:18px">
+            <span style="width:228px;font-size:20px">Biblioteca NB</span>
+            <div style="flex:1;height:20px;background:#EAE5DA"><div style="width:19%;height:20px;background:#3F6B4A"></div></div>
+            <span style="width:96px;text-align:right;font-family:Georgia,Times,serif;font-size:22px">22,10</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:18px">
+            <span style="width:228px;font-size:20px;color:#7A7468">outros</span>
+            <div style="flex:1;height:20px;background:#EAE5DA"><div style="width:11%;height:20px;background:#B8B1A6"></div></div>
+            <span style="width:96px;text-align:right;font-family:Georgia,Times,serif;font-size:22px">13,20</span>
+          </div>
+        </div>
+
+        <div style="flex:none;display:flex;gap:36px;border-top:1px solid #DDD6C8;padding-top:20px;margin-top:22px">
+          <div style="flex:none;display:flex;flex-direction:column;gap:10px">
+            <span style="font-size:15px;color:#7A7468">seis meses</span>
+            <div style="display:flex;align-items:flex-end;gap:7px;height:58px">
+              <div style="width:26px;height:38px;background:#DDD6C8"></div>
+              <div style="width:26px;height:46px;background:#DDD6C8"></div>
+              <div style="width:26px;height:30px;background:#DDD6C8"></div>
+              <div style="width:26px;height:52px;background:#DDD6C8"></div>
+              <div style="width:26px;height:58px;background:#DDD6C8"></div>
+              <div style="width:26px;height:26px;background:#B45309"></div>
+            </div>
+          </div>
+          <div style="flex:1;display:flex;align-items:flex-end;justify-content:space-between">
+            <div style="display:flex;flex-direction:column;gap:4px">
+              <span style="font-size:15px;color:#7A7468">modelo mais usado</span>
+              <span style="font-size:22px">claude-sonnet-4.5 <span style="color:#7A7468">· 58 % do gasto</span></span>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:4px;align-items:flex-end">
+              <span style="font-size:15px;color:#7A7468">tokens do mês</span>
+              <span style="font-family:Georgia,Times,serif;font-size:34px;line-height:1">41,2 M</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div data-theme="night" style="flex:none;width:1024px;height:768px;overflow:hidden;background:#161412;color:#F3EFE6;display:flex;flex-direction:column;padding:44px 48px 36px;box-sizing:border-box;box-shadow:0 1px 3px rgba(0,0,0,.35)">
+        <div style="flex:none;display:flex;align-items:baseline;justify-content:space-between">
+          <span style="font-size:13px;font-weight:bold;letter-spacing:3px;text-transform:uppercase;color:#9A9388">OpenRouter · setembro</span>
+          <span style="font-size:15px;color:#9A9388">13 dias decorridos · saldo 187,60 €</span>
+        </div>
+
+        <div style="flex:none;display:flex;align-items:flex-end;justify-content:space-between;margin-top:20px">
+          <div style="display:flex;align-items:flex-end;gap:16px">
+            <span style="font-family:Georgia,Times,serif;font-size:132px;line-height:.9;letter-spacing:-5px">312,40</span>
+            <span style="font-family:Georgia,Times,serif;font-size:52px;color:#9A9388;padding-bottom:10px">€</span>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px;padding-bottom:8px">
+            <span style="font-size:15px;color:#9A9388">vs agosto</span>
+            <span style="font-family:Georgia,Times,serif;font-size:52px;line-height:1;color:#9FBFA4">−8 %</span>
+            <span style="font-size:15px;color:#9A9388">projeção do mês 721 €</span>
+          </div>
+        </div>
+
+        <div style="flex:1;display:flex;flex-direction:column;justify-content:center;gap:18px;margin-top:26px;min-height:0">
+          <span style="font-size:15px;color:#9A9388">por workspace de cliente</span>
+          <div style="display:flex;align-items:center;gap:18px">
+            <span style="width:228px;font-size:20px">Alfaseguros</span>
+            <div style="flex:1;height:20px;background:#221F1B"><div style="width:100%;height:20px;background:#8FA3B5"></div></div>
+            <span style="width:96px;text-align:right;font-family:Georgia,Times,serif;font-size:22px">118,60</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:18px">
+            <span style="width:228px;font-size:20px">Interno · Transformatiive</span>
+            <div style="flex:1;height:20px;background:#221F1B"><div style="width:63%;height:20px;background:#8FA3B5"></div></div>
+            <span style="width:96px;text-align:right;font-family:Georgia,Times,serif;font-size:22px">74,20</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:18px">
+            <span style="width:228px;font-size:20px">Cliente L · Zoho People</span>
+            <div style="flex:1;height:20px;background:#221F1B"><div style="width:45%;height:20px;background:#8FA3B5"></div></div>
+            <span style="width:96px;text-align:right;font-family:Georgia,Times,serif;font-size:22px">52,90</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:18px">
+            <span style="width:228px;font-size:20px">NetJets</span>
+            <div style="flex:1;height:20px;background:#221F1B"><div style="width:26%;height:20px;background:#8FA3B5"></div></div>
+            <span style="width:96px;text-align:right;font-family:Georgia,Times,serif;font-size:22px">31,40</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:18px">
+            <span style="width:228px;font-size:20px">Biblioteca NB</span>
+            <div style="flex:1;height:20px;background:#221F1B"><div style="width:19%;height:20px;background:#9FBFA4"></div></div>
+            <span style="width:96px;text-align:right;font-family:Georgia,Times,serif;font-size:22px">22,10</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:18px">
+            <span style="width:228px;font-size:20px;color:#9A9388">outros</span>
+            <div style="flex:1;height:20px;background:#221F1B"><div style="width:11%;height:20px;background:#4A443C"></div></div>
+            <span style="width:96px;text-align:right;font-family:Georgia,Times,serif;font-size:22px">13,20</span>
+          </div>
+        </div>
+
+        <div style="flex:none;display:flex;gap:36px;border-top:1px solid #3A342E;padding-top:20px;margin-top:22px">
+          <div style="flex:none;display:flex;flex-direction:column;gap:10px">
+            <span style="font-size:15px;color:#9A9388">seis meses</span>
+            <div style="display:flex;align-items:flex-end;gap:7px;height:58px">
+              <div style="width:26px;height:38px;background:#3A342E"></div>
+              <div style="width:26px;height:46px;background:#3A342E"></div>
+              <div style="width:26px;height:30px;background:#3A342E"></div>
+              <div style="width:26px;height:52px;background:#3A342E"></div>
+              <div style="width:26px;height:58px;background:#3A342E"></div>
+              <div style="width:26px;height:26px;background:#E0A050"></div>
+            </div>
+          </div>
+          <div style="flex:1;display:flex;align-items:flex-end;justify-content:space-between">
+            <div style="display:flex;flex-direction:column;gap:4px">
+              <span style="font-size:15px;color:#9A9388">modelo mais usado</span>
+              <span style="font-size:22px">claude-sonnet-4.5 <span style="color:#9A9388">· 58 % do gasto</span></span>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:4px;align-items:flex-end">
+              <span style="font-size:15px;color:#9A9388">tokens do mês</span>
+              <span style="font-family:Georgia,Times,serif;font-size:34px;line-height:1">41,2 M</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div id="2g" style="display:flex;flex-direction:column;gap:14px">
+    <div style="display:flex;align-items:center;gap:12px">
+      <span style="font-family:Georgia,Times,serif;font-size:13px;padding:3px 8px;border:1px solid #B8B1A6;color:#4A453E">2g</span>
+      <span style="font-size:16px;font-weight:bold">Notícias — RSS Público e Expresso</span>
+      <span style="font-size:13px;color:#8A8478">/p/publico</span>
+    </div>
+    <div style="display:flex;gap:24px;flex-wrap:wrap">
+
+      <div data-theme="day" style="flex:none;width:1024px;height:768px;overflow:hidden;background:#F4F1EA;color:#1C1914;display:flex;flex-direction:column;padding:44px 48px 36px;box-sizing:border-box;box-shadow:0 1px 3px rgba(0,0,0,.14)">
+        <div style="flex:none;display:flex;align-items:baseline;justify-content:space-between">
+          <span style="font-size:13px;font-weight:bold;letter-spacing:3px;text-transform:uppercase;color:#7A7468">Notícias</span>
+          <span style="font-size:15px;color:#7A7468">Público · Expresso · último refresh 08:42</span>
+        </div>
+
+        <div style="flex:none;display:flex;gap:20px;margin-top:24px">
+          <div style="width:8px;flex:none;background:#5B6B7A"></div>
+          <div style="flex:1;display:flex;flex-direction:column;min-width:0">
+            <div style="display:flex;align-items:baseline;gap:12px">
+              <span style="font-size:13px;font-weight:bold;letter-spacing:2px;text-transform:uppercase;color:#5B6B7A">Política</span>
+              <span style="font-size:15px;color:#7A7468">há 18 min · Público</span>
+            </div>
+            <span style="font-family:Georgia,Times,serif;font-size:50px;line-height:1.12;margin-top:8px;text-wrap:pretty">Orçamento do Estado para 2027 entra no Parlamento na próxima semana</span>
+            <span style="font-size:19px;color:#7A7468;line-height:1.4;margin-top:10px">Documento segue para as comissões, com o debate na generalidade agendado para dia 24.</span>
+          </div>
+        </div>
+
+        <div style="flex:1;display:flex;flex-direction:column;justify-content:space-around;margin-top:26px;border-top:1px solid #DDD6C8;padding-top:6px;min-height:0">
+          <div style="display:flex;gap:20px;align-items:baseline">
+            <div style="width:8px;height:46px;flex:none;background:#B45309"></div>
+            <div style="flex:1;display:flex;flex-direction:column;min-width:0">
+              <span style="font-size:25px;line-height:1.25">Linha de Cascais com circulação reduzida ao fim de semana</span>
+              <span style="font-size:15px;color:#7A7468">Local · Público</span>
+            </div>
+            <span style="font-size:15px;color:#7A7468;flex:none">há 42 min</span>
+          </div>
+          <div style="display:flex;gap:20px;align-items:baseline">
+            <div style="width:8px;height:46px;flex:none;background:#3F6B4A"></div>
+            <div style="flex:1;display:flex;flex-direction:column;min-width:0">
+              <span style="font-size:25px;line-height:1.25">Exportações portuguesas crescem 3,1 % no segundo trimestre</span>
+              <span style="font-size:15px;color:#7A7468">Economia · Expresso</span>
+            </div>
+            <span style="font-size:15px;color:#7A7468;flex:none">há 1 h</span>
+          </div>
+          <div style="display:flex;gap:20px;align-items:baseline">
+            <div style="width:8px;height:46px;flex:none;background:#B45309"></div>
+            <div style="flex:1;display:flex;flex-direction:column;min-width:0">
+              <span style="font-size:25px;line-height:1.25">Nova ligação de metro a Loures entra em consulta pública</span>
+              <span style="font-size:15px;color:#7A7468">Local · Público</span>
+            </div>
+            <span style="font-size:15px;color:#7A7468;flex:none">há 2 h</span>
+          </div>
+          <div style="display:flex;gap:20px;align-items:baseline">
+            <div style="width:8px;height:46px;flex:none;background:#8A4A3A"></div>
+            <div style="flex:1;display:flex;flex-direction:column;min-width:0">
+              <span style="font-size:25px;line-height:1.25">Universidades registam mais candidatos na segunda fase</span>
+              <span style="font-size:15px;color:#7A7468">Sociedade · Expresso</span>
+            </div>
+            <span style="font-size:15px;color:#7A7468;flex:none">há 3 h</span>
+          </div>
+          <div style="display:flex;gap:20px;align-items:baseline">
+            <div style="width:8px;height:46px;flex:none;background:#3F6B4A"></div>
+            <div style="flex:1;display:flex;flex-direction:column;min-width:0">
+              <span style="font-size:25px;line-height:1.25">Renováveis cobriram 71 % do consumo de eletricidade em agosto</span>
+              <span style="font-size:15px;color:#7A7468">Ambiente · Público</span>
+            </div>
+            <span style="font-size:15px;color:#7A7468;flex:none">há 4 h</span>
+          </div>
+        </div>
+
+        <div style="flex:none;display:flex;align-items:center;justify-content:space-between;border-top:1px solid #DDD6C8;padding-top:18px;margin-top:20px">
+          <div style="display:flex;gap:26px;align-items:center">
+            <div style="display:flex;align-items:center;gap:9px"><div style="width:11px;height:11px;background:#5B6B7A"></div><span style="font-size:15px;color:#7A7468">Política 1</span></div>
+            <div style="display:flex;align-items:center;gap:9px"><div style="width:11px;height:11px;background:#B45309"></div><span style="font-size:15px;color:#7A7468">Local 2</span></div>
+            <div style="display:flex;align-items:center;gap:9px"><div style="width:11px;height:11px;background:#3F6B4A"></div><span style="font-size:15px;color:#7A7468">Economia e ambiente 2</span></div>
+            <div style="display:flex;align-items:center;gap:9px"><div style="width:11px;height:11px;background:#8A4A3A"></div><span style="font-size:15px;color:#7A7468">Sociedade 1</span></div>
+          </div>
+          <span style="font-size:15px;color:#7A7468">6 de 18 manchetes · Público 4 · Expresso 2</span>
+        </div>
+      </div>
+
+      <div data-theme="night" style="flex:none;width:1024px;height:768px;overflow:hidden;background:#161412;color:#F3EFE6;display:flex;flex-direction:column;padding:44px 48px 36px;box-sizing:border-box;box-shadow:0 1px 3px rgba(0,0,0,.35)">
+        <div style="flex:none;display:flex;align-items:baseline;justify-content:space-between">
+          <span style="font-size:13px;font-weight:bold;letter-spacing:3px;text-transform:uppercase;color:#9A9388">Notícias</span>
+          <span style="font-size:15px;color:#9A9388">Público · Expresso · último refresh 08:42</span>
+        </div>
+
+        <div style="flex:none;display:flex;gap:20px;margin-top:24px">
+          <div style="width:8px;flex:none;background:#8FA3B5"></div>
+          <div style="flex:1;display:flex;flex-direction:column;min-width:0">
+            <div style="display:flex;align-items:baseline;gap:12px">
+              <span style="font-size:13px;font-weight:bold;letter-spacing:2px;text-transform:uppercase;color:#8FA3B5">Política</span>
+              <span style="font-size:15px;color:#9A9388">há 18 min · Público</span>
+            </div>
+            <span style="font-family:Georgia,Times,serif;font-size:50px;line-height:1.12;margin-top:8px;text-wrap:pretty">Orçamento do Estado para 2027 entra no Parlamento na próxima semana</span>
+            <span style="font-size:19px;color:#9A9388;line-height:1.4;margin-top:10px">Documento segue para as comissões, com o debate na generalidade agendado para dia 24.</span>
+          </div>
+        </div>
+
+        <div style="flex:1;display:flex;flex-direction:column;justify-content:space-around;margin-top:26px;border-top:1px solid #3A342E;padding-top:6px;min-height:0">
+          <div style="display:flex;gap:20px;align-items:baseline">
+            <div style="width:8px;height:46px;flex:none;background:#E0A050"></div>
+            <div style="flex:1;display:flex;flex-direction:column;min-width:0">
+              <span style="font-size:25px;line-height:1.25">Linha de Cascais com circulação reduzida ao fim de semana</span>
+              <span style="font-size:15px;color:#9A9388">Local · Público</span>
+            </div>
+            <span style="font-size:15px;color:#9A9388;flex:none">há 42 min</span>
+          </div>
+          <div style="display:flex;gap:20px;align-items:baseline">
+            <div style="width:8px;height:46px;flex:none;background:#9FBFA4"></div>
+            <div style="flex:1;display:flex;flex-direction:column;min-width:0">
+              <span style="font-size:25px;line-height:1.25">Exportações portuguesas crescem 3,1 % no segundo trimestre</span>
+              <span style="font-size:15px;color:#9A9388">Economia · Expresso</span>
+            </div>
+            <span style="font-size:15px;color:#9A9388;flex:none">há 1 h</span>
+          </div>
+          <div style="display:flex;gap:20px;align-items:baseline">
+            <div style="width:8px;height:46px;flex:none;background:#E0A050"></div>
+            <div style="flex:1;display:flex;flex-direction:column;min-width:0">
+              <span style="font-size:25px;line-height:1.25">Nova ligação de metro a Loures entra em consulta pública</span>
+              <span style="font-size:15px;color:#9A9388">Local · Público</span>
+            </div>
+            <span style="font-size:15px;color:#9A9388;flex:none">há 2 h</span>
+          </div>
+          <div style="display:flex;gap:20px;align-items:baseline">
+            <div style="width:8px;height:46px;flex:none;background:#B5745E"></div>
+            <div style="flex:1;display:flex;flex-direction:column;min-width:0">
+              <span style="font-size:25px;line-height:1.25">Universidades registam mais candidatos na segunda fase</span>
+              <span style="font-size:15px;color:#9A9388">Sociedade · Expresso</span>
+            </div>
+            <span style="font-size:15px;color:#9A9388;flex:none">há 3 h</span>
+          </div>
+          <div style="display:flex;gap:20px;align-items:baseline">
+            <div style="width:8px;height:46px;flex:none;background:#9FBFA4"></div>
+            <div style="flex:1;display:flex;flex-direction:column;min-width:0">
+              <span style="font-size:25px;line-height:1.25">Renováveis cobriram 71 % do consumo de eletricidade em agosto</span>
+              <span style="font-size:15px;color:#9A9388">Ambiente · Público</span>
+            </div>
+            <span style="font-size:15px;color:#9A9388;flex:none">há 4 h</span>
+          </div>
+        </div>
+
+        <div style="flex:none;display:flex;align-items:center;justify-content:space-between;border-top:1px solid #3A342E;padding-top:18px;margin-top:20px">
+          <div style="display:flex;gap:26px;align-items:center">
+            <div style="display:flex;align-items:center;gap:9px"><div style="width:11px;height:11px;background:#8FA3B5"></div><span style="font-size:15px;color:#9A9388">Política 1</span></div>
+            <div style="display:flex;align-items:center;gap:9px"><div style="width:11px;height:11px;background:#E0A050"></div><span style="font-size:15px;color:#9A9388">Local 2</span></div>
+            <div style="display:flex;align-items:center;gap:9px"><div style="width:11px;height:11px;background:#9FBFA4"></div><span style="font-size:15px;color:#9A9388">Economia e ambiente 2</span></div>
+            <div style="display:flex;align-items:center;gap:9px"><div style="width:11px;height:11px;background:#B5745E"></div><span style="font-size:15px;color:#9A9388">Sociedade 1</span></div>
+          </div>
+          <span style="font-size:15px;color:#9A9388">6 de 18 manchetes · Público 4 · Expresso 2</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</section>
+
+</x-dc>
+</body>
+</html>
