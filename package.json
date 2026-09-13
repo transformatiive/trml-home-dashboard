@@ -1,0 +1,19 @@
+{
+  "name": "trml-home-dashboard",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Home dashboard tipo TRMNL para iPad 1 (iOS 5.1.1), Europe/Lisbon",
+  "main": "src/server.js",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node src/server.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "imapflow": "^1.0.186",
+    "node-ical": "^0.20.1"
+  }
+}
