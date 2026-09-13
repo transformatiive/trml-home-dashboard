@@ -1,0 +1,15 @@
+{
+  "name": "trml-home-dashboard",
+  "version": "1.0.0",
+  "private": true,
+  "description": "iPad 1 home dashboard (TRMNL-style playlist) for Transformatiive",
+  "main": "src/server.js",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "start": "node src/server.js",
+    "test": "node --test src/time.test.js src/lib/ics.test.js",
+    "icons": "node scripts/make-icons.js"
+  }
+}
