@@ -10,8 +10,7 @@ function plugin(ctx) {
   var days = "";
   (w.days || []).slice(0, 3).forEach(function (d) {
     days +=
-      '<td class="daycard" valign="top" align="center">' +
-      ui.wxIcon(d.code, false, 40) +
+      '<td class="daycard" valign="top" align="left">' +
       '<div class="label">' +
       render.escapeHtml(d.date.slice(8) + "/" + d.date.slice(5, 7)) +
       '</div><div class="value-sm">' +
@@ -27,34 +26,33 @@ function plugin(ctx) {
     hourCells +=
       '<td class="hourcell' +
       (h.now ? " now" : "") +
-      '" align="center" valign="bottom">' +
-      ui.wxIcon(h.code, h.hour >= 21 || h.hour < 8, 28) +
+      '" align="left" valign="top">' +
       '<div class="value-sm">' +
       render.escapeHtml(String(h.temp)) +
       '°</div><div class="label">' +
       render.escapeHtml(h.label) +
-      "</div></td>";
+      "h</div></td>";
   });
   var body =
     '<div class="panel">' +
-    ui.titleBar("wx-sun", w.city || "Oeiras", w.label || "Tempo") +
+    ui.titleBar(w.city || "Oeiras", w.label || "Tempo") +
     '<table class="hero" width="100%"><tr>' +
-    '<td width="40%" align="center" valign="top">' +
-    ui.wxIcon(w.code, night, 72) +
+    '<td width="46%" valign="top">' +
+    ui.wxIcon(w.code, night, 56) +
     '<div class="value huge">' +
     (w.temp != null ? render.escapeHtml(String(w.temp)) + "°" : "—") +
     "</div></td>" +
-    '<td width="60%" valign="top">' +
+    '<td width="54%" valign="top">' +
     '<table class="metrics" width="100%"><tr>' +
-    ui.metric("icon-wind", (w.wind != null ? w.wind : "—") + " km/h", "vento") +
-    ui.metric("icon-drop", (w.humidity != null ? w.humidity : "—") + "%", "humidade") +
-    ui.metric("wx-sun", w.uv != null ? String(w.uv) : "—", "UV") +
+    ui.metric((w.wind != null ? w.wind : "—") + " km/h", "vento") +
+    ui.metric((w.humidity != null ? w.humidity : "—") + "%", "humidade") +
+    ui.metric(w.uv != null ? String(w.uv) : "—", "UV") +
     "</tr></table></td></tr></table>" +
-    '<div class="label">Hoje</div>' +
+    '<div class="label">hoje</div>' +
     '<table class="hours" width="100%"><tr>' +
     hourCells +
     "</tr></table>" +
-    '<div class="label">Três dias</div>' +
+    '<div class="label">três dias</div>' +
     '<table class="days" width="100%"><tr>' +
     days +
     "</tr></table></div>";

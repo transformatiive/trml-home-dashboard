@@ -8,14 +8,13 @@ function plugin(ctx) {
   var weather = ctx.weather || {};
   var remaining = (power.remaining || []).slice(0, 12);
   var hours = (weather.hours || []).slice(0, 12);
-  var nowPrice = power.now ? power.now.price + " €/MWh" : "—";
+  var nowPrice = power.now ? String(power.now.price) : "—";
   var wxRows = "";
   hours.forEach(function (h) {
     wxRows +=
       '<td class="hourcell' +
       (h.now ? " now" : "") +
-      '" align="center" valign="bottom">' +
-      ui.wxIcon(h.code, h.hour >= 21 || h.hour < 8, 28) +
+      '" align="left" valign="top">' +
       '<div class="value-sm">' +
       render.escapeHtml(String(h.temp)) +
       '°</div><div class="label">' +
@@ -26,19 +25,18 @@ function plugin(ctx) {
       "h</div></td>";
   });
   var empty = !power.configured
-    ? ui.item("icon-bolt", "Preço OMIE indisponível", "Mercado diário Portugal")
+    ? ui.item("Preço OMIE indisponível", "Mercado diário Portugal", "", "warn")
     : "";
   var body =
     '<div class="panel">' +
-    ui.titleBar("icon-bolt", "Eletricidade + dia", "OMIE PT · " + (weather.city || "Oeiras")) +
+    ui.titleBar("Eletricidade", "OMIE PT · " + (weather.city || "Oeiras")) +
     '<table class="metrics" width="100%"><tr>' +
-    ui.metric("icon-bolt", nowPrice, "agora") +
-    ui.metric("icon-ok", power.cheapest ? power.cheapest.price + " €" : "—", "mais barato") +
-    ui.metric("icon-warn", power.peak ? power.peak.price + " €" : "—", "pico") +
+    ui.metric(nowPrice, "€/MWh agora") +
+    ui.metric(power.cheapest ? String(power.cheapest.price) : "—", "mais barato") +
+    ui.metric(power.peak ? String(power.peak.price) : "—", "pico") +
     "</tr></table>" +
-    '<div class="label">€/MWh a partir desta hora</div>' +
-    (remaining.length ? ui.hourBars(remaining, "price", "bar-power") : empty) +
-    '<div class="label">Tempo hora a hora · temperatura e vento</div>' +
+    (remaining.length ? ui.hourBars(remaining, "price") : empty) +
+    '<div class="label">temperatura e vento</div>' +
     '<table class="hours" width="100%"><tr>' +
     (wxRows || '<td class="label">sem horas</td>') +
     "</tr></table></div>";

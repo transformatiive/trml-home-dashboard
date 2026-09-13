@@ -6,25 +6,25 @@ var ui = require("../lib/ui");
 function plugin(ctx) {
   var cal = ctx.calendar || {};
   var rows = "";
-  var list = (cal.events || []).slice(0, 7);
+  var list = (cal.events || []).slice(0, 6);
   if (!cal.configured) {
-    rows = ui.item("icon-cal", "Calendário sem ICS", "Definir CALENDAR_ICS_URL no Railway");
+    rows = ui.item("Calendário sem ICS", "Definir CALENDAR_ICS_URL no Railway", "", "warn");
   } else if (!list.length) {
-    rows = ui.item("icon-ok", "Agenda livre", "Nada nas próximas 36 horas");
+    rows = ui.item("Agenda livre", "Nada nas próximas 36 horas", "ok", "ok");
   } else {
     list.forEach(function (ev) {
       var when = ev.allDay ? "todo o dia" : time.formatTime(ev.start);
       rows += ui.item(
-        ui.kindIcon(ev.kind),
         ev.summary,
         when + (ev.calendar ? " · " + ev.calendar : ""),
-        ev.happening ? "hot" : ev.timesheet ? "compact" : ""
+        ev.happening ? "hot" : "",
+        ui.kindTone(ev.kind)
       );
     });
   }
   var body =
     '<div class="panel">' +
-    ui.titleBar("icon-cal", "Calendário", "hoje e a seguir") +
+    ui.titleBar("Calendário", "hoje e a seguir") +
     '<div class="list">' +
     rows +
     "</div></div>";
