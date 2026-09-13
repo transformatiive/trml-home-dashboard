@@ -18,19 +18,27 @@ var PLUGINS = [
   weather,
   sun,
   publico,
-  ar,
-  openrouter,
   daysleft,
   power,
   warnings,
   email,
 ];
 
-function byId(id) {
+var EXTRA = [ar, openrouter];
+
+function lookup(list, id) {
   var i;
-  for (i = 0; i < PLUGINS.length; i++) {
-    if (PLUGINS[i].id === id) return { plugin: PLUGINS[i], index: i };
+  for (i = 0; i < list.length; i++) {
+    if (list[i].id === id) return i;
   }
+  return -1;
+}
+
+function byId(id) {
+  var index = lookup(PLUGINS, id);
+  if (index !== -1) return { plugin: PLUGINS[index], index: index };
+  index = lookup(EXTRA, id);
+  if (index !== -1) return { plugin: EXTRA[index], index: 0, extra: true };
   return { plugin: PLUGINS[0], index: 0 };
 }
 
@@ -41,6 +49,7 @@ function href(index) {
 
 module.exports = {
   PLUGINS: PLUGINS,
+  EXTRA: EXTRA,
   byId: byId,
   href: href,
 };
