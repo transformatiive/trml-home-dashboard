@@ -1,0 +1,60 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background: #2a2420;
+  color: #eadcc8;
+  font-family: Helvetica, Arial, Georgia, sans-serif;
+}
+body.theme-day { background: #3a332c; color: #f3e6d4; }
+body.theme-night { background: #241f1c; color: #eadcc8; }
+body.sky-clear { background: #2c4a62; }
+body.sky-partly { background: #3a4654; }
+body.sky-rain { background: #2a3540; }
+body.sky-fog { background: #4a4a48; }
+body.sky-storm { background: #3a2a28; }
+body.sky-clear-night, body.sky-cloud-night { background: #1c2430; }
+.rotate { display: none; padding: 24px; font-size: 28px; text-align: center; }
+table.shell { width: 1024px; height: 768px; border-collapse: collapse; }
+td.zone { width: 123px; height: 768px; background: transparent; }
+td.zone.flash { background: #c4a574; }
+a.zone-link { display: block; width: 123px; height: 768px; text-decoration: none; color: transparent; }
+td.stage { width: 778px; height: 768px; padding: 32px 16px 48px 16px; }
+.panel { width: 746px; }
+.kicker { font-size: 16px; letter-spacing: 2px; text-transform: uppercase; color: #9eb6c9; margin: 0 0 8px 0; }
+.clock, .temp.huge { font-size: 92px; line-height: 1; font-weight: bold; color: #eadcc8; margin: 0 0 8px 0; }
+.temp { font-size: 56px; line-height: 1; font-weight: bold; }
+.title { font-size: 28px; margin: 0 0 16px 0; }
+.date, .line { font-size: 24px; margin: 0 0 8px 0; }
+.sub { font-size: 18px; color: #cbbba6; margin: 0 0 12px 0; }
+.amber { color: #d4a017; }
+.sage, .ok { color: #8aa67a; }
+.alert { color: #c46b5a; }
+.warn { color: #d4a017; }
+.split { margin-top: 28px; }
+.col { padding-right: 16px; }
+.dot { width: 18px; height: 18px; background: #8aa67a; -webkit-border-radius: 9px; border-radius: 9px; margin: 8px 0; }
+.dot.warn, .dot.amber { background: #d4a017; }
+.dot.alert { background: #c46b5a; }
+.dot.sky { background: #6f93b0; }
+.list { margin-top: 12px; }
+.ev, .news, .warn-row { padding: 10px 0; font-size: 22px; border-bottom: 1px solid #4a433c; }
+.ev.now { background: #3a3028; }
+.ev.compact .what { font-size: 16px; color: #cbbba6; }
+.bar { display: inline-block; width: 8px; height: 22px; margin-right: 10px; background: #6f93b0; }
+.kind-work .bar { background: #6f93b0; }
+.kind-home .bar { background: #8aa67a; }
+.kind-family .bar { background: #d4a017; }
+.kind-holiday .bar { background: #8aa67a; }
+.when { display: inline-block; width: 110px; color: #cbbba6; font-size: 18px; }
+.what { font-size: 22px; }
+.empty { font-size: 24px; margin-top: 24px; }
+.hint { width: 1024px; text-align: center; font-size: 15px; color: #9a8c7c; margin-top: -36px; }
+.days td { text-align: left; padding-right: 16px; }
+.meters td { text-align: left; padding-right: 24px; }
+@media screen and (orientation: portrait) {
+  .rotate { display: block; }
+  table.shell { display: none; }
+  .hint { display: none; }
+}
