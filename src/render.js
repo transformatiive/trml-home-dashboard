@@ -15,15 +15,13 @@ function attr(str) {
 function wrap(opts) {
   var theme = opts.theme || "night";
   var title = opts.title || "LG Dash";
-  var pluginName = opts.pluginName || "";
-  var index = opts.index || 1;
-  var total = opts.total || 9;
   var prevHref = opts.prevHref || "/";
   var nextHref = opts.nextHref || "/";
-  var updated = opts.updated || "";
   var body = opts.body || "";
   var rotate = opts.rotateHint !== false;
   var qs = opts.qs || "";
+  var prev = attr(prevHref + qs);
+  var next = attr(nextHref + qs);
 
   return (
     "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n" +
@@ -47,33 +45,20 @@ function wrap(opts) {
     attr(theme) +
     "\">\n" +
     (rotate ? "<div class=\"rotate\">Rode o iPad para landscape.</div>\n" : "") +
-    "<table class=\"shell\" width=\"100%\" height=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">\n" +
-    "<tr>\n" +
-    "<td class=\"zone zone-prev\" id=\"zonePrev\" width=\"12%\" valign=\"middle\">" +
-    "<a class=\"zone-link\" id=\"linkPrev\" href=\"" +
-    attr(prevHref + qs) +
-    "\">&nbsp;</a></td>\n" +
-    "<td class=\"stage\" id=\"stage\" width=\"76%\" valign=\"top\">\n" +
-    "<table class=\"fill\" width=\"100%\" height=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">\n" +
-    "<tr><td class=\"canvas\" valign=\"top\">\n" +
+    "<div id=\"stage\" class=\"stage\">\n" +
+    "<div class=\"canvas\">\n" +
     body +
-    "\n</td></tr>\n" +
-    "<tr><td class=\"hint\" id=\"hint\" valign=\"middle\" height=\"36\">" +
-    escapeHtml(String(index)) +
-    " / " +
-    escapeHtml(String(total)) +
-    " · " +
-    escapeHtml(pluginName) +
-    (updated ? " · " + escapeHtml(updated) : "") +
-    "</td></tr>\n" +
-    "</table>\n" +
-    "</td>\n" +
-    "<td class=\"zone zone-next\" id=\"zoneNext\" width=\"12%\" valign=\"middle\">" +
-    "<a class=\"zone-link\" id=\"linkNext\" href=\"" +
-    attr(nextHref + qs) +
-    "\">&nbsp;</a></td>\n" +
-    "</tr>\n" +
-    "</table>\n" +
+    "\n</div>\n" +
+    "<a class=\"zone zone-prev\" id=\"zonePrev\" href=\"" +
+    prev +
+    "\">&nbsp;</a>\n" +
+    "<a class=\"zone zone-next\" id=\"zoneNext\" href=\"" +
+    next +
+    "\">&nbsp;</a>\n" +
+    "<a id=\"linkNext\" href=\"" +
+    next +
+    "\">&nbsp;</a>\n" +
+    "</div>\n" +
     "<script type=\"text/javascript\" src=\"/client.js\"></script>\n" +
     "</body>\n</html>\n"
   );
