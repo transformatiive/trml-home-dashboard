@@ -15,6 +15,9 @@ var rss = require("./lib/rss");
 var httpLib = require("./lib/http");
 var imap = require("./lib/imap");
 var omie = require("./lib/omie");
+var sunarc = require("./lib/sunarc");
+var zohobooks = require("./lib/zohobooks");
+var openrouterLib = require("./lib/openrouter");
 var legacyApi = require("./legacy-api");
 
 var PORT = Number(process.env.PORT || 8080);
@@ -30,6 +33,8 @@ var state = {
   email: { configured: false, unseen: 0, people: [], noise: 0 },
   news: [],
   electricity: { configured: false, hours: [], remaining: [] },
+  ar: { configured: false, total: 0, buckets: [], clients: [] },
+  openrouter: { configured: false, spent: 0, workspaces: [], months: [] },
   fetchedAt: null,
   errors: {},
 };
@@ -104,11 +109,22 @@ async function refresh() {
     if (cachedA) state.warnings = cachedA.payload;
   }
   try {
-    var xml = await httpLib.getText(
+    var publicoXml = await httpLib.getText(
       process.env.PUBLICO_RSS_URL ||
         "https://news.google.com/rss/search?q=site:publico.pt&hl=pt-PT&gl=PT&ceid=PT:pt"
     );
-    state.news = rss.parseRss(xml);
+    var publicoItems = rss.parseRss(publicoXml, "Público");
+    var expressoItems = [];
+    var expressoUrl =
+      process.env.EXPRESSO_RSS_URL ||
+      "https://news.google.com/rss/search?q=site:expresso.pt&hl=pt-PT&gl=PT&ceid=PT:pt";
+    try {
+      var exXml = await httpLib.getText(expressoUrl);
+      expressoItems = rss.parseRss(exXml, "Expresso");
+    } catch (exErr) {
+      errors.expresso = String(exErr.message || exErr);
+    }
+    state.news = rss.mergeNews([publicoItems, expressoItems]);
   } catch (e) {
     errors.news = String(e.message || e);
     var cachedN = cache.load("news-data");
@@ -128,6 +144,22 @@ async function refresh() {
     var cachedP = cache.load("electricity-data");
     if (cachedP) state.electricity = cachedP.payload;
   }
+  try {
+    state.ar = await zohobooks.fetchAr();
+  } catch (e) {
+    errors.ar = String(e.message || e);
+    var cachedAr = cache.load("ar-data");
+    if (cachedAr) state.ar = cachedAr.payload;
+    else state.ar = zohobooks.empty("error");
+  }
+  try {
+    state.openrouter = await openrouterLib.fetchOpenRouter();
+  } catch (e) {
+    errors.openrouter = String(e.message || e);
+    var cachedOr = cache.load("openrouter-data");
+    if (cachedOr) state.openrouter = cachedOr.payload;
+    else state.openrouter = openrouterLib.empty("error");
+  }
   state.errors = errors;
   state.fetchedAt = new Date();
   cache.save("calendar-data", state.calendar);
@@ -136,6 +168,8 @@ async function refresh() {
   cache.save("news-data", state.news);
   cache.save("email-data", state.email);
   cache.save("electricity-data", state.electricity);
+  cache.save("ar-data", state.ar);
+  cache.save("openrouter-data", state.openrouter);
 }
 
 function mime(file) {
@@ -171,6 +205,11 @@ function pageFor(id) {
     email: state.email,
     news: state.news,
     electricity: state.electricity,
+    ar: state.ar,
+    openrouter: state.openrouter,
+    errors: state.errors,
+    fetchedAt: state.fetchedAt,
+    qs: keyQuery(),
   };
   var view = found.plugin.plugin(ctx);
   var html = render.wrap({
@@ -271,6 +310,20 @@ var server = http.createServer(function (req, res) {
   if (pathname.indexOf("/p/") === 0) {
     var id = pathname.slice(3).replace(/\/$/, "");
     send(res, 200, "text/html; charset=utf-8", pageFor(id), extra);
+    return;
+  }
+  if (pathname === "/img/sunarc.png") {
+    try {
+      var q = parsed.query || {};
+      var png = sunarc.renderPng({
+        d: q.d,
+        t: q.t,
+        theme: q.theme,
+      });
+      send(res, 200, "image/png", png, extra);
+    } catch (err) {
+      send(res, 500, "text/plain; charset=utf-8", "sunarc failed", extra);
+    }
     return;
   }
   var safe = path.normalize(pathname).replace(/^(\.\.[/\\])+/, "");
