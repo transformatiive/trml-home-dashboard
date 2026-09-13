@@ -2,18 +2,12 @@
   "name": "trml-home-dashboard",
   "version": "1.0.0",
   "private": true,
-  "description": "Home dashboard tipo TRMNL para iPad 1 (iOS 5.1.1), Europe/Lisbon",
+  "description": "iPad 1 home dashboard on existing lgdash URL",
   "main": "src/server.js",
-  "engines": {
-    "node": ">=20"
-  },
+  "engines": { "node": ">=20" },
   "scripts": {
     "start": "node src/server.js",
-    "dev": "node src/server.js"
-  },
-  "dependencies": {
-    "express": "^4.21.2",
-    "imapflow": "^1.0.186",
-    "node-ical": "^0.20.1"
+    "test": "node --test src/time.test.js src/lib/ics.test.js",
+    "icons": "node scripts/make-icons.js"
   }
 }

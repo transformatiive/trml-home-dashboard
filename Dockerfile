@@ -1,8 +1,9 @@
-FROM node:20-alpine
+FROM node:22-alpine
 WORKDIR /app
-COPY package.json package-lock.json* ./
-RUN npm install --omit=dev
-COPY . .
+COPY package.json ./
+COPY src ./src
+COPY public ./public
+COPY scripts ./scripts
 ENV NODE_ENV=production
-EXPOSE 3000
+EXPOSE 8080
 CMD ["node", "src/server.js"]
