@@ -131,7 +131,8 @@ function metric(value, label) {
   );
 }
 
-function hourBars(rows, field) {
+function hourBars(rows, field, opts) {
+  opts = opts || {};
   if (!rows || !rows.length) return "";
   var vals = rows.map(function (r) {
     return Number(r[field]);
@@ -139,9 +140,11 @@ function hourBars(rows, field) {
   var min = Math.min.apply(null, vals);
   var max = Math.max.apply(null, vals);
   var span = Math.max(1, max - min);
+  var base = opts.base != null ? opts.base : 16;
+  var range = opts.range != null ? opts.range : 88;
   var cells = "";
   rows.forEach(function (r, i) {
-    var h = 16 + Math.round(((Number(r[field]) - min) / span) * 88);
+    var h = base + Math.round(((Number(r[field]) - min) / span) * range);
     var nowCls = r.now ? " now" : "";
     var cheap = r.band ? " " + r.band : "";
     cells +=
