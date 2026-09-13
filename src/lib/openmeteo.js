@@ -1,5 +1,6 @@
 "use strict";
 
+var fmt = require("./fmt");
 var http = require("./http");
 var time = require("../time");
 
@@ -34,8 +35,14 @@ function labelFromCode(code) {
 
 function parseIsoLocal(iso) {
   var m = /^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2})/.exec(iso || "");
-  if (!m) return { hour: 0, ymd: "" };
-  return { hour: Number(m[4]), ymd: m[1] + "-" + m[2] + "-" + m[3] };
+  if (!m) return { hour: 0, minute: 0, ymd: "" };
+  return { hour: Number(m[4]), minute: Number(m[5]), ymd: m[1] + "-" + m[2] + "-" + m[3] };
+}
+
+function stampToMin(iso) {
+  var p = parseIsoLocal(iso);
+  if (!p.ymd) return 0;
+  return p.hour * 60 + p.minute;
 }
 
 async function fetchWeather() {
@@ -45,10 +52,10 @@ async function fetchWeather() {
     encodeURIComponent(LAT) +
     "&longitude=" +
     encodeURIComponent(LON) +
-    "&current=temperature_2m,weather_code,wind_speed_10m,relative_humidity_2m,apparent_temperature" +
-    "&hourly=temperature_2m,weather_code,wind_speed_10m" +
-    "&daily=weather_code,temperature_2m_max,temperature_2m_min,sunrise,sunset,uv_index_max" +
-    "&timezone=Europe%2FLisbon&forecast_days=2";
+    "&current=temperature_2m,weather_code,wind_speed_10m,wind_direction_10m,relative_humidity_2m,apparent_temperature" +
+    "&hourly=temperature_2m,weather_code,wind_speed_10m,precipitation" +
+    "&daily=weather_code,temperature_2m_max,temperature_2m_min,sunrise,sunset,uv_index_max,precipitation_sum" +
+    "&timezone=Europe%2FLisbon&forecast_days=4&past_days=1";
   var data = await http.getJson(url);
   var cur = data.current || {};
   var daily = data.daily || {};
@@ -68,42 +75,70 @@ async function fetchWeather() {
       min: Math.round(daily.temperature_2m_min[i]),
       sunrise: daily.sunrise[i],
       sunset: daily.sunset[i],
-      uv: daily.uv_index_max ? Math.round(daily.uv_index_max[i]) : null,
+      uv: daily.uv_index_max ? Math.round(daily.uv_index_max[i] * 10) / 10 : null,
+      rain: daily.precipitation_sum ? Math.round(daily.precipitation_sum[i] * 10) / 10 : 0,
     });
   }
   var hours = [];
+  var rain24 = 0;
   for (i = 0; i < (hourly.time || []).length; i++) {
     var parsed = parseIsoLocal(hourly.time[i]);
     var isToday = parsed.ymd === today;
     var upcoming = isToday && parsed.hour >= hm.hour;
     var tomorrow = parsed.ymd > today;
     if (!upcoming && !(tomorrow && hours.length < 16)) continue;
-    if (hours.length >= 16) break;
+    if (hours.length >= 16) continue;
+    var tempHour = Math.round(hourly.temperature_2m[i]);
     hours.push({
       hour: parsed.hour,
-      label: (parsed.hour < 10 ? "0" : "") + parsed.hour,
-      temp: Math.round(hourly.temperature_2m[i]),
+      label: fmt.pad2(parsed.hour),
+      temp: tempHour,
       wind: Math.round(hourly.wind_speed_10m[i]),
       code: Number(hourly.weather_code[i]),
       now: isToday && parsed.hour === hm.hour,
       ymd: parsed.ymd,
+      tone: fmt.tempTone(tempHour),
     });
   }
-  var sun = days[0] || {};
+  rain24 = 0;
+  var cutoff = now.getTime() - 24 * 3600 * 1000;
+  for (i = 0; i < (hourly.time || []).length; i++) {
+    var ts = Date.parse(hourly.time[i]);
+    if (!isNaN(ts) && ts >= cutoff && ts <= now.getTime()) {
+      rain24 += hourly.precipitation ? Number(hourly.precipitation[i] || 0) : 0;
+    }
+  }
+  var todayRow = null;
+  var yestRow = null;
+  for (i = 0; i < days.length; i++) {
+    if (days[i].date === today) todayRow = days[i];
+    if (days[i].date === time.ymd(time.addDays(now, -1))) yestRow = days[i];
+  }
+  if (!todayRow) todayRow = days[1] || days[0] || {};
+  var forecastDays = days.filter(function (d) {
+    return d.date >= today;
+  });
   return {
     temp: Math.round(cur.temperature_2m),
     feels: Math.round(cur.apparent_temperature),
     wind: Math.round(cur.wind_speed_10m),
+    windDir: fmt.windDir(cur.wind_direction_10m),
     humidity: Math.round(cur.relative_humidity_2m),
+    rain24: Math.round(rain24 * 10) / 10,
     code: code,
     label: labelFromCode(code),
     sky: skyFromCode(code, night),
-    days: days,
+    days: forecastDays,
     hours: hours,
-    sunrise: sun.sunrise || "",
-    sunset: sun.sunset || "",
-    uv: sun.uv,
+    sunrise: todayRow.sunrise || "",
+    sunset: todayRow.sunset || "",
+    ySunrise: yestRow ? yestRow.sunrise : "",
+    ySunset: yestRow ? yestRow.sunset : "",
+    uv: todayRow.uv,
+    max: todayRow.max,
+    min: todayRow.min,
     city: CITY,
+    fetchedAt: now,
   };
 }
 
@@ -112,4 +147,5 @@ module.exports = {
   skyFromCode: skyFromCode,
   labelFromCode: labelFromCode,
   parseIsoLocal: parseIsoLocal,
+  stampToMin: stampToMin,
 };
