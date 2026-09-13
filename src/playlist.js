@@ -3,12 +3,14 @@
 var agora = require("./plugins/agora");
 var calendar = require("./plugins/calendar");
 var weather = require("./plugins/weather");
+var power = require("./plugins/power");
+var sun = require("./plugins/sun");
 var warnings = require("./plugins/warnings");
 var email = require("./plugins/email");
 var publico = require("./plugins/publico");
 var daysleft = require("./plugins/daysleft");
 
-var PLUGINS = [agora, calendar, weather, warnings, email, publico, daysleft];
+var PLUGINS = [agora, calendar, weather, power, sun, warnings, email, publico, daysleft];
 
 function byId(id) {
   var i;
