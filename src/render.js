@@ -32,9 +32,10 @@ function wrap(opts) {
     "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />\n" +
     "<meta http-equiv=\"refresh\" content=\"120\" />\n" +
     "<meta name=\"apple-mobile-web-app-capable\" content=\"yes\" />\n" +
-    "<meta name=\"apple-mobile-web-app-status-bar-style\" content=\"black\" />\n" +
+    "<meta name=\"apple-mobile-web-app-status-bar-style\" content=\"black-translucent\" />\n" +
     "<meta name=\"apple-mobile-web-app-title\" content=\"LG Dash\" />\n" +
-    "<meta name=\"viewport\" content=\"width=1024, height=768, initial-scale=1, maximum-scale=1, user-scalable=no\" />\n" +
+    "<meta name=\"format-detection\" content=\"telephone=no\" />\n" +
+    "<meta name=\"viewport\" content=\"width=1024, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no\" />\n" +
     "<link rel=\"apple-touch-icon\" sizes=\"57x57\" href=\"/icons/apple-touch-icon-57.png\" />\n" +
     "<link rel=\"apple-touch-icon\" sizes=\"72x72\" href=\"/icons/apple-touch-icon-72.png\" />\n" +
     "<link rel=\"stylesheet\" type=\"text/css\" href=\"/screen.css\" />\n" +
@@ -46,29 +47,33 @@ function wrap(opts) {
     attr(theme) +
     "\">\n" +
     (rotate ? "<div class=\"rotate\">Rode o iPad para landscape.</div>\n" : "") +
-    "<table class=\"shell\" width=\"1024\" height=\"768\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">\n" +
+    "<table class=\"shell\" width=\"100%\" height=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">\n" +
     "<tr>\n" +
-    "<td class=\"zone zone-prev\" id=\"zonePrev\" width=\"123\" height=\"768\" valign=\"middle\">" +
+    "<td class=\"zone zone-prev\" id=\"zonePrev\" width=\"12%\" valign=\"middle\">" +
     "<a class=\"zone-link\" id=\"linkPrev\" href=\"" +
     attr(prevHref + qs) +
     "\">&nbsp;</a></td>\n" +
-    "<td class=\"stage\" id=\"stage\" width=\"778\" height=\"768\" valign=\"top\">\n" +
+    "<td class=\"stage\" id=\"stage\" width=\"76%\" valign=\"top\">\n" +
+    "<table class=\"fill\" width=\"100%\" height=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">\n" +
+    "<tr><td class=\"canvas\" valign=\"top\">\n" +
     body +
-    "\n</td>\n" +
-    "<td class=\"zone zone-next\" id=\"zoneNext\" width=\"123\" height=\"768\" valign=\"middle\">" +
-    "<a class=\"zone-link\" id=\"linkNext\" href=\"" +
-    attr(nextHref + qs) +
-    "\">&nbsp;</a></td>\n" +
-    "</tr>\n" +
-    "</table>\n" +
-    "<div class=\"hint\" id=\"hint\">" +
+    "\n</td></tr>\n" +
+    "<tr><td class=\"hint\" id=\"hint\" valign=\"middle\" height=\"36\">" +
     escapeHtml(String(index)) +
     " / " +
     escapeHtml(String(total)) +
     " · " +
     escapeHtml(pluginName) +
     (updated ? " · " + escapeHtml(updated) : "") +
-    "</div>\n" +
+    "</td></tr>\n" +
+    "</table>\n" +
+    "</td>\n" +
+    "<td class=\"zone zone-next\" id=\"zoneNext\" width=\"12%\" valign=\"middle\">" +
+    "<a class=\"zone-link\" id=\"linkNext\" href=\"" +
+    attr(nextHref + qs) +
+    "\">&nbsp;</a></td>\n" +
+    "</tr>\n" +
+    "</table>\n" +
     "<script type=\"text/javascript\" src=\"/client.js\"></script>\n" +
     "</body>\n</html>\n"
   );

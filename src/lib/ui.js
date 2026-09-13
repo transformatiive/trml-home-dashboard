@@ -15,12 +15,9 @@ function img(name, size) {
   );
 }
 
-function titleBar(icon, title, meta) {
+function titleBar(title, meta) {
   return (
     '<table class="titlebar" width="100%" cellpadding="0" cellspacing="0"><tr>' +
-    '<td class="tb-icon" width="44" valign="middle">' +
-    img(icon, 32) +
-    "</td>" +
     '<td class="tb-title" valign="middle">' +
     render.escapeHtml(title) +
     "</td>" +
@@ -47,21 +44,25 @@ function wxIcon(code, night, size) {
   return img(wxIconName(code, night), size || 48);
 }
 
-function kindIcon(kind) {
-  if (kind === "home") return "icon-home";
-  if (kind === "family") return "icon-family";
-  if (kind === "holiday") return "icon-holiday";
-  return "icon-work";
+function kindTone(kind) {
+  if (kind === "home") return "home";
+  if (kind === "family") return "family";
+  if (kind === "holiday") return "holiday";
+  return "work";
 }
 
-function item(icon, primary, secondary, extraClass) {
+function item(primary, secondary, extraClass, tone) {
+  var swatch =
+    tone
+      ? '<td class="swatch swatch-' +
+        render.attr(tone) +
+        '" width="8" valign="top">&nbsp;</td>'
+      : "";
   return (
     '<table class="item ' +
     render.attr(extraClass || "") +
     '" width="100%" cellpadding="0" cellspacing="0"><tr>' +
-    '<td class="item-ico" width="44" valign="middle">' +
-    img(icon, 32) +
-    "</td>" +
+    swatch +
     '<td class="item-main" valign="middle"><div class="item-pri">' +
     render.escapeHtml(primary) +
     "</div>" +
@@ -83,10 +84,9 @@ function progress(pct) {
   );
 }
 
-function metric(icon, value, label) {
+function metric(value, label) {
   return (
-    '<td class="metric" valign="top" align="center">' +
-    img(icon, 32) +
+    '<td class="metric" valign="top">' +
     '<div class="value">' +
     render.escapeHtml(String(value)) +
     '</div><div class="label">' +
@@ -95,7 +95,7 @@ function metric(icon, value, label) {
   );
 }
 
-function hourBars(rows, field, barClass) {
+function hourBars(rows, field) {
   if (!rows || !rows.length) return "";
   var vals = rows.map(function (r) {
     return Number(r[field]);
@@ -105,7 +105,7 @@ function hourBars(rows, field, barClass) {
   var span = Math.max(1, max - min);
   var cells = "";
   rows.forEach(function (r, i) {
-    var h = 12 + Math.round(((Number(r[field]) - min) / span) * 70);
+    var h = 16 + Math.round(((Number(r[field]) - min) / span) * 88);
     var nowCls = r.now ? " now" : "";
     var cheap = r.band ? " " + r.band : "";
     cells +=
@@ -113,9 +113,7 @@ function hourBars(rows, field, barClass) {
       nowCls +
       cheap +
       '" valign="bottom" align="center">' +
-      '<div class="hbar-fill ' +
-      (barClass || "") +
-      '" style="height:' +
+      '<div class="hbar-fill" style="height:' +
       h +
       'px">&nbsp;</div>' +
       '<div class="hbar-lab">' +
@@ -134,7 +132,7 @@ module.exports = {
   titleBar: titleBar,
   wxIconName: wxIconName,
   wxIcon: wxIcon,
-  kindIcon: kindIcon,
+  kindTone: kindTone,
   item: item,
   progress: progress,
   metric: metric,
