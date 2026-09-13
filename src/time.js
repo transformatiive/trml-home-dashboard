@@ -1,93 +1,130 @@
-'use strict';
+"use strict";
 
-var TZ = 'Europe/Lisbon';
+var TZ = process.env.TZ || "Europe/Lisbon";
 
 function parts(date) {
-  var d = date || new Date();
-  var fmt = new Intl.DateTimeFormat('en-GB', {
+  var fmt = new Intl.DateTimeFormat("en-GB", {
     timeZone: TZ,
-    year: 'numeric',
-    month: '2-digit',
-    day: '2-digit',
-    hour: '2-digit',
-    minute: '2-digit',
-    second: '2-digit',
-    weekday: 'short',
-    hourCycle: 'h23'
+    weekday: "short",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    hourCycle: "h23",
   });
   var map = {};
-  fmt.formatToParts(d).forEach(function (p) {
+  fmt.formatToParts(date).forEach(function (p) {
     map[p.type] = p.value;
   });
-  return {
-    year: parseInt(map.year, 10),
-    month: parseInt(map.month, 10),
-    day: parseInt(map.day, 10),
-    hour: parseInt(map.hour, 10),
-    minute: parseInt(map.minute, 10),
-    second: parseInt(map.second, 10),
-    weekday: map.weekday
-  };
+  return map;
+}
+
+function lisbonNow() {
+  return new Date();
+}
+
+function hourMinute(date) {
+  var p = parts(date);
+  return { hour: parseInt(p.hour, 10), minute: parseInt(p.minute, 10) };
 }
 
 function isNight(date) {
-  var p = parts(date);
-  var mins = p.hour * 60 + p.minute;
-  return mins >= 20 * 60 + 30 || mins < 8 * 60;
+  var hm = hourMinute(date || lisbonNow());
+  return hm.hour > 20 || (hm.hour === 20 && hm.minute >= 30) || hm.hour < 8;
+}
+
+function themeName(date) {
+  return isNight(date) ? "night" : "day";
 }
 
 function formatTime(date) {
   var p = parts(date);
-  return pad(p.hour) + ':' + pad(p.minute);
+  return p.hour + ":" + p.minute;
 }
 
 function formatDateLong(date) {
-  return new Intl.DateTimeFormat('pt-PT', {
+  return new Intl.DateTimeFormat("pt-PT", {
     timeZone: TZ,
-    weekday: 'long',
-    day: 'numeric',
-    month: 'long'
+    weekday: "long",
+    day: "numeric",
+    month: "long",
   }).format(date);
 }
 
-function formatDateShort(date) {
-  return new Intl.DateTimeFormat('pt-PT', {
+function formatDayShort(date) {
+  return new Intl.DateTimeFormat("pt-PT", {
     timeZone: TZ,
-    day: 'numeric',
-    month: 'short'
+    weekday: "short",
+    day: "numeric",
+    month: "short",
   }).format(date);
 }
 
-function pad(n) {
-  return n < 10 ? '0' + n : String(n);
+function ymd(date) {
+  var p = parts(date);
+  return p.year + "-" + p.month + "-" + p.day;
 }
 
-function lisbonDateKey(date) {
+function startOfDay(date) {
   var p = parts(date);
-  return p.year + '-' + pad(p.month) + '-' + pad(p.day);
+  return fromLisbonParts(p.year, p.month, p.day, "00", "00");
 }
 
-function startOfLisbonDay(date) {
-  var p = parts(date);
-  return Date.parse(
-    p.year + '-' + pad(p.month) + '-' + pad(p.day) + 'T00:00:00+01:00'
-  );
+function fromLisbonParts(year, month, day, hour, minute) {
+  var iso =
+    year +
+    "-" +
+    month +
+    "-" +
+    day +
+    "T" +
+    hour +
+    ":" +
+    minute +
+    ":00";
+  var asUtc = new Date(iso + "Z");
+  var shown = parts(asUtc);
+  var wantMin =
+    parseInt(hour, 10) * 60 + parseInt(minute, 10);
+  var gotMin = parseInt(shown.hour, 10) * 60 + parseInt(shown.minute, 10);
+  var delta = (gotMin - wantMin) * 60 * 1000;
+  return new Date(asUtc.getTime() - delta);
 }
 
-function minutesOfDay(date) {
+function addDays(date, n) {
+  return new Date(date.getTime() + n * 86400000);
+}
+
+function startOfYear(date) {
   var p = parts(date);
-  return p.hour * 60 + p.minute;
+  return fromLisbonParts(p.year, "01", "01", "00", "00");
+}
+
+function endOfYear(date) {
+  var p = parts(date);
+  return fromLisbonParts(p.year, "12", "31", "23", "59");
+}
+
+function daysBetween(a, b) {
+  return Math.round((startOfDay(b) - startOfDay(a)) / 86400000);
 }
 
 module.exports = {
   TZ: TZ,
   parts: parts,
+  lisbonNow: lisbonNow,
+  hourMinute: hourMinute,
   isNight: isNight,
+  themeName: themeName,
   formatTime: formatTime,
   formatDateLong: formatDateLong,
-  formatDateShort: formatDateShort,
-  lisbonDateKey: lisbonDateKey,
-  minutesOfDay: minutesOfDay,
-  pad: pad,
-  startOfLisbonDay: startOfLisbonDay
+  formatDayShort: formatDayShort,
+  ymd: ymd,
+  startOfDay: startOfDay,
+  fromLisbonParts: fromLisbonParts,
+  addDays: addDays,
+  startOfYear: startOfYear,
+  endOfYear: endOfYear,
+  daysBetween: daysBetween,
 };
