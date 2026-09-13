@@ -429,7 +429,7 @@ function renderPng(opts) {
   var left = Math.max(0, times.set - nowMin);
   var legend =
     elapsed +
-    " % do dia decorrido \u00b7 faltam " +
+    " % do dia decorrido · faltam " +
     Math.floor(left / 60) +
     " h " +
     (left % 60) +
@@ -443,15 +443,15 @@ function renderPng(opts) {
 }
 
 function statusLine(nowMin, times) {
-  if (nowMin < times.rise) return "ainda noite \u00b7 nasce às " + labelTime(times.rise);
-  if (nowMin > times.set) return "já noite \u00b7 pôs-se às " + labelTime(times.set);
+  if (nowMin < times.rise) return "ainda noite · nasce às " + labelTime(times.rise);
+  if (nowMin > times.set) return "já noite · pôs-se às " + labelTime(times.set);
   var left = times.set - nowMin;
-  return "dia \u00b7 pôr-do-sol daqui a " + Math.floor(left / 60) + " h " + (left % 60) + " min";
+  return "dia · pôr-do-sol daqui a " + Math.floor(left / 60) + " h " + (left % 60) + " min";
 }
 
 function durationDelta(today, yesterday) {
   var d = today.dayLen - yesterday.dayLen;
-  var sign = d < 0 ? "\u2212" : "+";
+  var sign = d < 0 ? "−" : "+";
   var abs = Math.abs(d);
   var sec = Math.round((abs % 1) * 60);
   var min = Math.floor(abs);

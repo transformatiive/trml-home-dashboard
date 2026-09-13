@@ -20,7 +20,7 @@ function plugin(ctx) {
   var lead = items[0];
   var rest = items.slice(1, 6);
   var counts = {};
-  var sources = { "Público": 0, Expresso: 0 };
+  var sources = { Público: 0, Expresso: 0 };
   items.forEach(function (it) {
     var sec = it.category || "Outros";
     counts[sec] = (counts[sec] || 0) + 1;
