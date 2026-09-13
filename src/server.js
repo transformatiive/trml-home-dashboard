@@ -14,6 +14,7 @@ var ipma = require("./lib/ipma");
 var rss = require("./lib/rss");
 var httpLib = require("./lib/http");
 var imap = require("./lib/imap");
+var omie = require("./lib/omie");
 var legacyApi = require("./legacy-api");
 
 var PORT = Number(process.env.PORT || 8080);
@@ -28,6 +29,7 @@ var state = {
   warnings: { items: [], color: "ok" },
   email: { configured: false, unseen: 0, people: [], noise: 0 },
   news: [],
+  electricity: { configured: false, hours: [], remaining: [] },
   fetchedAt: null,
   errors: {},
 };
@@ -119,6 +121,13 @@ async function refresh() {
     var cachedE = cache.load("email-data");
     if (cachedE) state.email = cachedE.payload;
   }
+  try {
+    state.electricity = await omie.fetchElectricity();
+  } catch (e) {
+    errors.electricity = String(e.message || e);
+    var cachedP = cache.load("electricity-data");
+    if (cachedP) state.electricity = cachedP.payload;
+  }
   state.errors = errors;
   state.fetchedAt = new Date();
   cache.save("calendar-data", state.calendar);
@@ -126,6 +135,7 @@ async function refresh() {
   cache.save("warnings-data", state.warnings);
   cache.save("news-data", state.news);
   cache.save("email-data", state.email);
+  cache.save("electricity-data", state.electricity);
 }
 
 function mime(file) {
@@ -160,6 +170,7 @@ function pageFor(id) {
     warnings: state.warnings,
     email: state.email,
     news: state.news,
+    electricity: state.electricity,
   };
   var view = found.plugin.plugin(ctx);
   var html = render.wrap({
