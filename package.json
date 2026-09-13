@@ -4,7 +4,9 @@
   "private": true,
   "description": "iPad 1 home dashboard on existing lgdash URL",
   "main": "src/server.js",
-  "engines": { "node": ">=20" },
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
     "start": "node src/server.js",
     "test": "node --test src/time.test.js src/lib/ics.test.js",

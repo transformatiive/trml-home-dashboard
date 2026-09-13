@@ -1,5 +1,7 @@
-data/
 node_modules/
+data/
 .env
+.env.local
 *.log
 .DS_Store
+.railway/

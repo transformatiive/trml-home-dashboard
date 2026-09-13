@@ -1,56 +1,21 @@
-# Home dashboard (iPad 1)
+# Home Dashboard (iPad 1)
 
-Painel tipo TRMNL para a casa em Lisboa: uma playlist de ecrãs inteiros, gerados no servidor, pensados para **iPad 1 / iOS 5.1.1** e **Adicionar ao ecrã inicial**.
+Playlist tipo TRMNL para o iPad 1 (1024×768, iOS 5.1.1), em português, fuso `Europe/Lisbon`.
 
-Repositório: `transformatiive/trml-home-dashboard`. Não reutiliza a app Railway antiga nem o site Website-Daniela-Santos-Coach.
+Replaces the old lgdash renderer **in place**. Same Railway service, same public URL, same `DASH_TOKEN`.
+
+**iPad web clip:** `https://lgdash-production.up.railway.app/legacy.html?k=DASH_TOKEN`
 
 ## Playlist v1
 
-Agora → Calendário → Meteorologia → Avisos → Email Meter → Público → Days Left.
+Agora → Calendário → Tempo → Avisos IPMA → Email Meter → Público → Dias do ano.
 
-Toque invisível: **12% esquerda** = anterior, **12% direita** = seguinte (ciclo). Centro não navega.
+Toque na coluna esquerda (12%) = anterior; direita = seguinte. O centro não navega. Auto-avanço ~75 s, pausado 2 min após um toque. Tema night 20:30–08:00 Europe/Lisbon.
 
-## Tema
+Health: `/health` (sem token). Playlist: `/` e `/legacy.html` (com `?k=`).
 
-- **Noite (escuro):** 20:30–08:00 `Europe/Lisbon`
-- **Dia (claro):** fora dessa janela
-- Sem variáveis CSS (iOS 5)
+## Variáveis
 
-## Arranque local
+Preserve on Railway (do not rotate): `DASH_TOKEN`, `PUSH_TOKEN`.
 
-```
-cp .env.example .env
-# preencher CALENDAR_ICS_URL só no .env — nunca no git
-npm install
-npm start
-```
-
-Abrir `http://127.0.0.1:3000/` (no iPad 1 usar HTTP na LAN; o Safari antigo não confia em Let's Encrypt).
-
-## Railway
-
-Projecto: `efda071b-0975-4bdd-8ba5-aa7d86ea7d1a`. Serviço novo (`home-dashboard`), código greenfield.
-
-Variável obrigatória para o calendário:
-
-- `CALENDAR_ICS_URL` — URL ICS **privado** do Google Calendar (Definições do calendário → endereço secreto). Colar só nas variáveis do serviço Railway. **Não** commitar, **não** colar em issues, README ou logs.
-
-Opcionais para Email Meter (contagens, sem corpos):
-
-- `IMAP_USER`
-- `IMAP_PASSWORD` (app password Gmail)
-- `IMAP_HOST` (default `imap.gmail.com`)
-
-Meteorologia: Open-Meteo (sem chave). Avisos: IPMA distrito Lisboa (`LSB`). Público: RSS. Dias restantes: cálculo local + feriados PT.
-
-## iPad 1
-
-- Viewport 1024×768, metas `apple-mobile-web-app-*` da época
-- Layout tabela 12% / 76% / 12%, sem `position:fixed`
-- JS do cliente ES3 (`nav.js`)
-- Ícones 57×57 e 72×72
-- HTTPS público é para telemóvel/admin; o web clip do iPad deve ser HTTP na LAN
-
-## Verificação neste ambiente
-
-Chrome/headless cobre navegação da playlist e o tema. **Não substitui** o teste no iPad 1 físico (web clip, standby, TLS).
+Also used: `CALENDAR_ICS_URL`, optional `EMAIL_IMAP_USER` / `EMAIL_IMAP_PASS`.

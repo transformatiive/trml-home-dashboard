@@ -1,37 +1,30 @@
-'use strict';
+"use strict";
 
-var PLUGINS = [
-  { id: 'agora', name: 'Agora' },
-  { id: 'calendar', name: 'Calendário' },
-  { id: 'weather', name: 'Meteorologia' },
-  { id: 'warnings', name: 'Avisos' },
-  { id: 'email', name: 'Email' },
-  { id: 'publico', name: 'Público' },
-  { id: 'daysleft', name: 'Dias' }
-];
+var agora = require("./plugins/agora");
+var calendar = require("./plugins/calendar");
+var weather = require("./plugins/weather");
+var warnings = require("./plugins/warnings");
+var email = require("./plugins/email");
+var publico = require("./plugins/publico");
+var daysleft = require("./plugins/daysleft");
 
-function normalizeIndex(n) {
-  var len = PLUGINS.length;
-  var i = ((n % len) + len) % len;
-  return i;
+var PLUGINS = [agora, calendar, weather, warnings, email, publico, daysleft];
+
+function byId(id) {
+  var i;
+  for (i = 0; i < PLUGINS.length; i++) {
+    if (PLUGINS[i].id === id) return { plugin: PLUGINS[i], index: i };
+  }
+  return { plugin: PLUGINS[0], index: 0 };
 }
 
-function at(n) {
-  return PLUGINS[normalizeIndex(n)];
-}
-
-function prevIndex(n) {
-  return normalizeIndex(n - 1);
-}
-
-function nextIndex(n) {
-  return normalizeIndex(n + 1);
+function href(index) {
+  var p = PLUGINS[(index + PLUGINS.length) % PLUGINS.length];
+  return "/p/" + p.id;
 }
 
 module.exports = {
   PLUGINS: PLUGINS,
-  normalizeIndex: normalizeIndex,
-  at: at,
-  prevIndex: prevIndex,
-  nextIndex: nextIndex
+  byId: byId,
+  href: href,
 };
