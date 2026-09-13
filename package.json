@@ -9,7 +9,7 @@
   },
   "scripts": {
     "start": "node src/server.js",
-    "test": "node --test src/time.test.js src/lib/ics.test.js src/lib/omie.test.js",
+    "test": "node --test src/time.test.js src/lib/ics.test.js src/lib/omie.test.js src/lib/sunarc.test.js src/lib/rss.test.js",
     "icons": "node scripts/make-icons.js"
   }
 }
