@@ -3,6 +3,7 @@
 var render = require("../render");
 var time = require("../time");
 var holidays = require("../lib/holidays");
+var ui = require("../lib/ui");
 
 function plugin(ctx) {
   var now = ctx.now;
@@ -18,28 +19,22 @@ function plugin(ctx) {
   var remaining = holidays.remainingHolidays(year, today).slice(0, 5);
   var rows = "";
   remaining.forEach(function (h) {
-    rows +=
-      "<div class=\"ev kind-holiday\"><span class=\"when\">" +
-      render.escapeHtml(h.date.slice(8) + "/" + h.date.slice(5, 7)) +
-      "</span><span class=\"what\">" +
-      render.escapeHtml(h.name) +
-      "</span></div>";
+    rows += ui.item(
+      "icon-holiday",
+      h.name,
+      h.date.slice(8) + "/" + h.date.slice(5, 7)
+    );
   });
   var body =
-    "<div class=\"panel\">" +
-    "<div class=\"kicker\">" +
-    render.escapeHtml(String(year)) +
-    "</div>" +
-    "<div class=\"temp huge\">" +
+    '<div class="panel">' +
+    ui.titleBar("icon-year", String(year), pct + "% já passou") +
+    '<div class="value huge">' +
     render.escapeHtml(String(left)) +
-    "</div>" +
-    "<div class=\"title\">dias até ao fim do ano</div>" +
-    "<div class=\"sub\">" +
-    render.escapeHtml(String(pct)) +
-    "% do ano já passou</div>" +
-    "<div class=\"kicker\">feriados PT</div>" +
-    "<div class=\"list\">" +
-    (rows || "<div class=\"sub\">sem feriados restantes</div>") +
+    '</div><div class="label">dias até ao fim do ano</div>' +
+    ui.progress(pct) +
+    '<div class="label">feriados PT</div>' +
+    '<div class="list">' +
+    (rows || ui.item("icon-ok", "sem feriados restantes", "")) +
     "</div></div>";
   return { title: "Dias", pluginName: "Dias do ano", body: body };
 }
